@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount
+BINS=kill tty touch echo mount sync umount nice
 all: $(BINS)
 
 $(BINS): %: %.c
