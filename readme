@@ -1,0 +1,18 @@
+basename.c - strip file name affixes
+cp.c - copy or moves files
+echo.c - print arguments
+kill.c - terminate a process
+ln.c - make links between files
+mount.c - mount a filesystem
+nice.c - execute a utility at an altered scheduling priority
+printf.c - format and print data
+rev.c - reverse lines characterwise
+sleep.c - suspend execution for an interval
+sync.c - commit filesystem caches to disk
+tee.c - pipe fitting
+touch.c - set modification date of a file
+true.c - do nothing successfully
+tty.c - print the file name of the terminal connected to stdin
+umount.c - unmount filesystem
+wc.c - display a count of lines words and characters in a file
+yes.c - output a string repeatedly until killed
