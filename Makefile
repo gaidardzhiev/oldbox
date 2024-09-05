@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -30,3 +30,4 @@ man:
 	echo wc.c - display a count of lines words and characters in a file
 	echo yes.c - output a string repeatedly until killed
 	echo tr.c - transliterate data stream
+	echo cat.c - concatenate files and print on the stdout
