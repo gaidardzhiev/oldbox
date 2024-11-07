@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -43,3 +43,4 @@ man:
 	echo replace.c - regular expression pattern locator and change executor
 	echo readelf.c - displays information about ELF files
 	echo strings.c - prints sequences of printable characters
+	echo ls.c - lists directory contents
