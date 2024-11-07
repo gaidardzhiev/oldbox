@@ -10,7 +10,6 @@ else
 	make test
 	make install
 fi
-
 if make --version; then
 	printf "\n"
 else
