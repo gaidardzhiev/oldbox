@@ -4,7 +4,6 @@
 #include <sys/stat.h>
 #include <pwd.h>
 #include <grp.h>
-//#include <time.h>
 #include <string.h>
 
 void ls(const char *path)
@@ -12,17 +11,21 @@ void ls(const char *path)
 	struct dirent *entry;
 	struct stat fileStat;
 	DIR *dp = opendir(path);
+
 	if (dp == NULL) {
 		perror("opendir");
 		return;
 	}
+
 	while ((entry = readdir(dp)) != NULL) {
 		char fullPath[2048];
 		snprintf(fullPath, sizeof(fullPath), "%s/%s", path, entry->d_name);
+
 		if (stat(fullPath, &fileStat) < 0) {
 			perror("stat");
 			continue;
 		}
+
 		printf((S_ISDIR(fileStat.st_mode)) ? "d" : "_");
 		printf((fileStat.st_mode & S_IRUSR) ? "r" : "_");
 		printf((fileStat.st_mode & S_IWUSR) ? "w" : "_");
@@ -34,23 +37,23 @@ void ls(const char *path)
 		printf((fileStat.st_mode & S_IWOTH) ? "w" : "_");
 		printf((fileStat.st_mode & S_IXOTH) ? "x" : "_");
 		printf(" %ld ", fileStat.st_nlink);
+
 		struct passwd *pw = getpwuid(fileStat.st_uid);
 		struct group  *gr = getgrgid(fileStat.st_gid);
 		printf("%s %s ", pw->pw_name, gr->gr_name);
 		printf("%lld ", (long long)fileStat.st_size);
-		//char timeBuf[80];
-		//struct tm *tm_info = localtime(&fileStat.st_mtime);
-		//strftime(timeBuf, sizeof(timeBuf), "%Y-%m-%d %H:%M   ", tm_info);
-		//printf("%s ", timeBuf);
-		//printf("%s\n", entry->d_name);
 		printf("	%s\n", entry->d_name);
 	}
 
 	closedir(dp);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-	ls(".");
+	if (argc > 1) {
+		ls(argv[1]);
+	} else {
+		ls(".");
+	}
 	return 0;
 }
