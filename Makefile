@@ -33,7 +33,7 @@ man:
 	echo cat.c - concatenate files and print on the stdout
 	echo shell.c - simple command-line shell
 	echo pwd.c - print the path of the current directory
-	echo ps.c - rocess status information
+	echo ps.c - process status information
 	echo grep.c - global regular expression print
 	echo du.c - estimate file space usage
 	echo rm.c - removes files
