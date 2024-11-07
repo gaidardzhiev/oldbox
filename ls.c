@@ -32,11 +32,11 @@ void ls(const char *path)
 		printf((fileStat.st_mode & S_IROTH) ? "r" : "_");
 		printf((fileStat.st_mode & S_IWOTH) ? "w" : "_");
 		printf((fileStat.st_mode & S_IXOTH) ? "x" : "_");
-		printf(" %ld ", fileStat.st_nlink);
+		printf("	%ld ", fileStat.st_nlink);
 		struct passwd *pw = getpwuid(fileStat.st_uid);
 		struct group  *gr = getgrgid(fileStat.st_gid);
-		printf("%s %s ", pw->pw_name, gr->gr_name);
-		printf("%lld ", (long long)fileStat.st_size);
+		printf("	%s %s ", pw->pw_name, gr->gr_name);
+		printf("	%lld ", (long long)fileStat.st_size);
 		printf("	%s\n", entry->d_name);
 	}
 	closedir(dp);
