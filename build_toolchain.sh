@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if tcc --version; then
-        printf "\n"
+        printf "\n" > /dev/null
 else
 	git clone https://github.com/TinyCC/tinycc
 	cd tinycc
@@ -10,8 +10,11 @@ else
 	make test
 	make install
 fi
+
+printf "\n"
+
 if make --version; then
-	printf "\n"
+	printf "\n" > /dev/null
 else
 	wget https://fosszone.csd.auth.gr/gnu/make/make-4.4.tar.gz
 	tar xf make-4.4.tar.gz
