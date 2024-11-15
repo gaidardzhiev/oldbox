@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+
 #define BLOCK 65536
 #define r register
 #define d int
@@ -18,6 +19,7 @@
 #define v argv
 #define o open
 #define k close
+
 w buf[BLOCK];
 d g(c,v)d c;
 w**v;

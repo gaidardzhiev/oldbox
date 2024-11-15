@@ -4,7 +4,9 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #define BSIZE 8192
+
 struct stat stbuf1,stbuf2;
 char iobuf[BSIZE];
 int main(argc,argv)char*argv[];

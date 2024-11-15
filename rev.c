@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #define N 4096
+
 char line[N];
 FILE *input;
 int main(argc,argv)char**argv;

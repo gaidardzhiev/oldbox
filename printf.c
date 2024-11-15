@@ -1,5 +1,7 @@
 #include <stdlib.h>
+
 #define NEXT(p)(*(p)?*(p)++:0)
+
 char fmtbuf[1024];
 double fnum;
 long lnum;

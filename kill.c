@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
-main(argc,argv)char**argv;
+
+int main(argc,argv)char**argv;
 {
 	register signo,pid,res;
 	int errlev;
@@ -10,7 +11,7 @@ main(argc,argv)char**argv;
 	errlev=0;
 	if(argc<=1) {
 usage:
-		printf("usage: kill <SIG> pid ...\n");
+		printf("usage: kill <SIG> <PID>\n");
 		exit(2);
 	}
 	if(*argv[1]=='-') {

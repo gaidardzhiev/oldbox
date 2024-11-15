@@ -3,8 +3,10 @@
 #include <dirent.h>
 #include <string.h>
 #include <ctype.h>
+
 #define LENGTH 512
 #define PROC "/proc"
+
 int is_number(const char*str)
 {
 	while(*str) {

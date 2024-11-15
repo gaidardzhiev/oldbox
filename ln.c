@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 char*rindex();
 int main(argc,argv)char**argv;
 {
