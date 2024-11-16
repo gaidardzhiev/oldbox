@@ -35,6 +35,7 @@ void print_hex(const unsigned char*buffer,size_t length)
 		printf("\n");
 	}
 }
+
 int main(int argc,char*argv[])
 {
 	if(argc!=2) {
