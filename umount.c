@@ -2,12 +2,15 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
 #define	NMOUNT	512
 #define	NAMSIZ	1024
+
 struct mtab {
 	char file[NAMSIZ];
 	char spec[NAMSIZ];
 } mtab[NMOUNT];
+
 int main(argc, argv)char**argv;
 {
 	register struct mtab*mp;
