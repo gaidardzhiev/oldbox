@@ -72,6 +72,7 @@ int main(argc,argv)char **argv;
 		stash(p);
 	}
 }
+
 stash(p)
 {
 	int k;int i;int d;d=t?16:p;
@@ -79,4 +80,5 @@ stash(p)
 		for(k=0;k<n;k++)
 			write(openf[k],out+i,d<p-i?d:p-i);
 }
+
 puts(s)char*s;{while(*s)write(2,s++,1);}
