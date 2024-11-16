@@ -35,6 +35,7 @@ void execute_command(char*command)
 		} while(!WIFEXITED(status)&&!WIFSIGNALED(status));
 	}
 }
+
 int main()
 {
 	char command[MAX_CMD_LENGTH];
