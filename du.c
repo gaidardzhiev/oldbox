@@ -16,6 +16,7 @@ void human_readable_size(long size,char*buffer)
 	}
 	sprintf(buffer,"%ld %s",size,units[unit_index]);
 }
+
 long calculate_directory_size(const char*path)
 {
 	long total_size=0;
@@ -42,6 +43,7 @@ long calculate_directory_size(const char*path)
 	closedir(dir);
 	return total_size;
 }
+
 int main(int argc,char*argv[])
 {
 	if(argc<2) {
