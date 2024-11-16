@@ -9,6 +9,7 @@
 
 struct stat stbuf1,stbuf2;
 char iobuf[BSIZE];
+int copy(char*from,char*to);
 int main(argc,argv)char*argv[];
 {
 	register i,r;
