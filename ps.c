@@ -15,6 +15,7 @@ int is_number(const char*str)
 	}
 	return 1;
 }
+
 void read_process_info(const char*pid)
 {
 	char path[LENGTH];
@@ -29,6 +30,7 @@ void read_process_info(const char*pid)
 	snprintf(tty,sizeof(tty),"%d",tty_nr);
 	printf("%s\t%s\t%s\n",pid,tty,cmd);
 }
+
 int main()
 {
 	DIR*dir=opendir(PROC);
@@ -46,4 +48,3 @@ int main()
 	closedir(dir);
 	return EXIT_SUCCESS;
 }
-
