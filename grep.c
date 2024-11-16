@@ -19,6 +19,7 @@ void highlight(const char*line,const char*pattern)
 	}
 	printf("%s",line);
 }
+
 void match(const char*filename,const char*pattern)
 {
 	FILE*file=fopen(filename,"r");
@@ -35,6 +36,7 @@ void match(const char*filename,const char*pattern)
 	}
 	fclose(file);
 }
+
 int main(int argc,char*argv[])
 {
 	if(argc!=3) {
