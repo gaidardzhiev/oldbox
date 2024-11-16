@@ -24,6 +24,7 @@ usage:
 	fprintf(stderr,"usage:cp <source> <dest>\n");
 	exit(1);
 }
+
 copy(from,to)char*from,*to;
 {
 	int fold,fnew,n;
