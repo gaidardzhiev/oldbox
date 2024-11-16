@@ -30,6 +30,7 @@ void search_and_replace(FILE*file,const char*pattern, const char*replacement)
 	}
 	regfree(&regex);
 }
+
 int main(int argc,char*argv[])
 {
 	if(argc!=4) {
