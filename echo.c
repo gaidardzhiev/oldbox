@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-main(argc,argv)int argc;
-char *argv[];
+main(argc,argv)int argc;char *argv[];
 {
 	register int i,nflg;
 	nflg=0;
