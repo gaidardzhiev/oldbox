@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int main(argc,argv)char**argv;
 {
 	int i,token;
@@ -55,6 +56,7 @@ int main(argc,argv)char**argv;
 	}
 	exit(0);
 }
+
 wcp(wd,charct,wordct,linect)register char*wd;
 long charct;
 long wordct;
