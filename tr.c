@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int dflag=0;
 int sflag=0;
 int cflag=0;
@@ -10,7 +11,8 @@ char vect[256];
 struct string {
 	int last,max;
 	char*p;
-} string1,string2;
+} 
+string1,string2;
 int main(argc,argv)char**argv;
 {
 	register i;
