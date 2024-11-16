@@ -1,6 +1,3 @@
 #include <unistd.h>
 
-int main()
-{
-	sync();
-}
+int main(){sync();}
