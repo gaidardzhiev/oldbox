@@ -10,6 +10,7 @@ void ascii2hex(const char*input)
 	}
 	printf("\n");
 }
+
 int main()
 {
 	char input[1024];
