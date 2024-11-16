@@ -1,4 +1,1 @@
-main()
-{
-	exit(1);
-}
+main(){exit(1);}
