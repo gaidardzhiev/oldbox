@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(argc,argv)int argc;
-char*argv[];
+int main(argc,argv)int argc;char*argv[];
 {
 	int nicarg=10;
 	extern errno;
@@ -14,7 +13,7 @@ char*argv[];
 		argv++;
 	}
 	if(argc<2) {
-		fputs("usage: nice [OPTION] [COMMAND [ARG]...]\n",stderr);
+		fputs("usage: nice <opt> <cmd <arg>...>\n",stderr);
 		exit(1);
 	}
 	nice(nicarg);
