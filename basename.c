@@ -20,6 +20,6 @@ int main(argc,argv)char**argv;
 	}
 output:
 	puts(p2);
-	puts(stdout);
+//	puts(stdout);
 	exit(0);
 }
