@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 #define NEXT(p)(*(p)?*(p)++:0)
@@ -5,8 +6,8 @@
 char fmtbuf[1024];
 double fnum;
 long lnum;
-int main(argc,argv)char**argv;
-{
+int atonum(const char *str);
+int main(argc,argv)char**argv; {
 	char*format=*++argv,**Argv;
 	register char*fmt,*p;
 	register c,i;
