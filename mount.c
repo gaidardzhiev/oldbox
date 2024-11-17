@@ -11,8 +11,7 @@ struct mtab {
 	char spec[NAMSIZ];
 } mtab[NMOUNT];
 
-int main(argc,argv)char **argv;
-{
+int main(argc,argv)char **argv; {
 	register int ro;
 	register struct mtab *mp;
 	register char *np;
@@ -49,6 +48,7 @@ int main(argc,argv)char **argv;
 			mf=creat("/etc/mtab",0644);
 			write(mf, (char*)mtab, (mp-mtab+1)*2*NAMSIZ);
 			exit;
+			exit(0);
 		}
 	}
 	exit(0);
