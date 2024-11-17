@@ -64,7 +64,7 @@ int main(argc,argv)char **argv;
 				w=read(0,in,512);
 				r=0;
 				if(w<=0){stash(p);
-					return;
+					return 0;
 				}
 			}
 			out[p++]=in[r++];
