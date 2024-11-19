@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#define rz return 0
+void touch(int force, char *name);
 
 int main(argc,argv)int argc;char*argv[];
 {
@@ -15,7 +15,7 @@ int main(argc,argv)int argc;char*argv[];
 		else force=0;
 }
 
-touch(force,name)int force;char*name;
+void touch(force,name)int force;char*name;
 {
 	struct stat stbuff;
 	char junk[1];
@@ -23,7 +23,7 @@ touch(force,name)int force;char*name;
 	if(stat(name, &stbuff)<0)if(force)goto create;
 		else {
 			fprintf(stderr,"touch: file %s does not exist...\n",name);
-			rz;
+			return;
 		}
 	if(stbuff.st_size==0)goto create;
 	if((fd=open(name,2))<0)goto bad;
@@ -37,10 +37,10 @@ touch(force,name)int force;char*name;
 		goto bad;
 	}
 	close(fd);
-	rz;
+	return;
 bad:
 	fprintf(stderr,"cannot touch %s\n",name);
-	rz;
+	return;
 create:
 	if((fd=creat(name,0666))<0)goto bad;
 	close(fd);
