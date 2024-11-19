@@ -33,7 +33,7 @@ copy(from,to)char*from,*to;
 	int mode;
 	if((fold=open(from,0))<0) {
 		fprintf(stderr,"cp: cannot open %s\n",from);
-		return(1);
+		return 1;
 	}
 	fstat(fold, &stbuf1);
 	mode=stbuf1.st_mode;
@@ -50,13 +50,13 @@ copy(from,to)char*from,*to;
 	if(stat(to, &stbuf2)>=0) {
 		if(stbuf1.st_dev==stbuf2.st_dev&&stbuf1.st_ino==stbuf2.st_ino) {
 			fprintf(stderr,"cp: cannot copy file to itself...\n");
-			return(1);
+			return 1;
 		}
 	}
 	if((fnew=creat(to,mode))<0) {
 		fprintf(stderr,"cp: cannot create... %s\n",to);
 		close(fold);
-		return(1);
+		return 1;
 	}
 	while(n=read(fold,iobuf,BSIZE)) {
 		if(n<0) {
@@ -68,10 +68,10 @@ copy(from,to)char*from,*to;
 			fprintf(stderr,"cp: write error...\n");
 			close(fold);
 			close(fnew);
-			return(1);
+			return 1;
 		}
 	}
 	close(fold);
 	close(fnew);
-	return(0);
+	return 0;
 }
