@@ -8,13 +8,15 @@ int save=0;
 char code[256];
 char squeez[256];
 char vect[256];
+
 struct string {
 	int last,max;
 	char*p;
 } 
+
 string1,string2;
-int main(argc,argv)char**argv;
-{
+
+int main(argc,argv)char**argv; {
 	register i;
 	int j;
 	register c,d;
@@ -73,9 +75,8 @@ int main(argc,argv)char**argv;
 	}
 	exit(0);
 }
-next(s)
-struct string*s;
-{
+
+next(s) struct string*s; {
 again:
 	if(s->max) {
 		if(s->last++<s->max)
@@ -97,9 +98,8 @@ again:
 	}
 	return(s->last=nextc(s));
 }
-nextc(s)
-struct string*s;
-{
+
+nextc(s) struct string*s; {
 	register c,i,n;
 	c=*s->p++;
 	if(c=='\\') {
