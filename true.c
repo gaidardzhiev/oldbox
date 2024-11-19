@@ -1,5 +1,2 @@
 #include <stdlib.h>
-int main()
-{
-	exit(0);
-}
+int main(){exit(0);}
