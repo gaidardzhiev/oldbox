@@ -15,5 +15,5 @@ main(argc,argv)int argc;char *argv[];
 		if(i<argc-1)putchar(' ');
 	}
 	if(nflg==0)putchar('\n');
-	exit(0);
+	exit 0;
 }
