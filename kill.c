@@ -2,8 +2,7 @@
 #include <signal.h>
 #include <stdlib.h>
 
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	register signo,pid,res;
 	int errlev;
 	extern char *sys_errlist[];
