@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	int i,token;
 	register FILE*fp;
 	long linect,wordct,charct;
