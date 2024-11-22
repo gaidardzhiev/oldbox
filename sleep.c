@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	int c,n;
 	char*s;
 	n=0;

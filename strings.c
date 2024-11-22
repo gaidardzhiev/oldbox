@@ -4,8 +4,7 @@
 
 #define MIN_LENGTH 4
 
-void strings(FILE *file)
-{
+void strings(FILE *file) {
 	int c;
 	int count = 0;
 	char buffer[1024];
@@ -30,8 +29,7 @@ void strings(FILE *file)
 	}
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	if (argc < 2) {
 		fprintf(stderr, "usage: %s <file>\n", argv[0]);
 		return EXIT_FAILURE;
