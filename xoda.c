@@ -82,8 +82,7 @@ void xoda(const char *filename, const char format)
 	fclose(file);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	if (argc != 3) {
 		fprintf(stderr, "usage: %s <filename> <x|o|d|a>\n", argv[0]);
 		return EXIT_FAILURE;
