@@ -6,8 +6,7 @@
 #include <sys/stat.h>
 
 char*rindex();
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	struct stat statb;
 	register char*np;
 	int fflag=0;
