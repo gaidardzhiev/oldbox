@@ -6,8 +6,7 @@
 #include <grp.h>
 #include <string.h>
 
-void ls(const char *path)
-{
+void ls(const char *path) {
 	struct dirent *entry;
 	struct stat fileStat;
 	DIR *dp = opendir(path);
@@ -42,8 +41,7 @@ void ls(const char *path)
 	closedir(dp);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	if (argc > 1) {
 		ls(argv[1]);
 	} else {
