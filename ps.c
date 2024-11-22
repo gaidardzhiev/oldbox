@@ -7,8 +7,7 @@
 #define LENGTH 512
 #define PROC "/proc"
 
-int is_number(const char*str)
-{
+int is_number(const char*str) {
 	while(*str) {
 		if(!isdigit(*str))return 0;
 		str++;
@@ -16,8 +15,7 @@ int is_number(const char*str)
 	return 1;
 }
 
-void read_process_info(const char*pid)
-{
+void read_process_info(const char*pid) {
 	char path[LENGTH];
 	snprintf(path,sizeof(path),"%s/%s/stat",PROC,pid);
 	FILE*file=fopen(path,"r");
