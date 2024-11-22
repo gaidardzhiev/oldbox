@@ -7,8 +7,7 @@
 #define E "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x66\x69\x6C\x65\x6E\x61\x6D\x65\x3E\x20\x3C\x70\x61\x74\x74\x65\x72\x6E\x3E\x20\x3C\x72\x65\x70\x6C\x61\x63\x65\x6D\x65\x6E\x74\x3E"
 #define X "\x63\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x6F\x70\x65\x6E\x20\x66\x69\x6C\x65\x2E\x2E\x2E"
 
-void search_and_replace(FILE*file,const char*pattern, const char*replacement)
-{
+void search_and_replace(FILE*file,const char*pattern, const char*replacement) {
 	char line[BUFFER];
 	regex_t regex;
 	regmatch_t match;
@@ -31,8 +30,7 @@ void search_and_replace(FILE*file,const char*pattern, const char*replacement)
 	regfree(&regex);
 }
 
-int main(int argc,char*argv[])
-{
+int main(int argc,char*argv[]) {
 	if(argc!=4) {
 		fprintf(stderr,E"\n",argv[0]);
 		return EXIT_FAILURE;
