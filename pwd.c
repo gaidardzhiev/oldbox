@@ -9,8 +9,7 @@
 #define n pathname
 
 c*g();
-m()
-{
+m() {
 	c n[512];
 	g(n);
 	p("%s\n",n);

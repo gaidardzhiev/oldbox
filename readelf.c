@@ -4,8 +4,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void print_elf_header(Elf64_Ehdr *header)
-{
+void print_elf_header(Elf64_Ehdr *header) {
 	printf("ELF header:\n");
 	printf("  magic:   %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x %x\n",
 	       header->e_ident[0], header->e_ident[1], header->e_ident[2], header->e_ident[3],
@@ -38,8 +37,7 @@ void print_elf_header(Elf64_Ehdr *header)
 //	}
 //}
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 	if (argc != 2) {
 		fprintf(stderr, "usage: %s <ELF_file>\n", argv[0]);
 		return EXIT_FAILURE;
