@@ -3,8 +3,7 @@
 #include <string.h>
 
 char*ttyname();
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	register char *p;
 	p=ttyname(0);
 	if(argc==2&&!strcmp(argv[1],"-s"));
