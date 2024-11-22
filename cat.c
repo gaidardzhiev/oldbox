@@ -22,8 +22,7 @@
 
 w buf[BLOCK];
 d g(c,v)d c;
-w**v;
-{
+w**v; {
 	r d fflg=0;
 	r d fi,fo;
 	r d n;
