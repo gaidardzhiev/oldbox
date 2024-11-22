@@ -11,8 +11,7 @@ struct mtab {
 	char spec[NAMSIZ];
 } mtab[NMOUNT];
 
-int main(argc, argv)char**argv;
-{
+int main(argc, argv)char**argv; {
 	register struct mtab*mp;
 	register char*p1,*p2;
 	int mf;
