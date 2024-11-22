@@ -44,8 +44,7 @@ long calculate_directory_size(const char*path)
 	return total_size;
 }
 
-int main(int argc,char*argv[])
-{
+int main(int argc,char*argv[]) {
 	if(argc<2) {
 		fprintf(stderr,HEX"\n",argv[0]);
 		return EXIT_FAILURE;
