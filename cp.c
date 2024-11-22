@@ -10,8 +10,7 @@
 struct stat stbuf1,stbuf2;
 char iobuf[BSIZE];
 int copy(char*from,char*to);
-int main(argc,argv)char*argv[];
-{
+int main(argc,argv)char*argv[]; {
 	register i,r;
 	if(argc<3)goto usage;
 	if(argc>3) {
@@ -26,8 +25,7 @@ usage:
 	exit(1);
 }
 
-copy(from,to)char*from,*to;
-{
+copy(from,to)char*from,*to; {
 	int fold,fnew,n;
 	register char*p1,*p2,*bp;
 	int mode;
