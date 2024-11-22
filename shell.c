@@ -8,8 +8,7 @@
 #define MAX_CMD_LENGTH 2048
 #define MAX_ARG_LENGTH 128
 
-void execute_command(char*command)
-{
+void execute_command(char*command) {
 	char*args[MAX_ARG_LENGTH];
 	pid_t pid,wpid;
 	int status;
@@ -36,8 +35,7 @@ void execute_command(char*command)
 	}
 }
 
-int main()
-{
+int main() {
 	char command[MAX_CMD_LENGTH];
 	while(1) {
 		printf("shell# ");
