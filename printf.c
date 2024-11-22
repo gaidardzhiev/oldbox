@@ -15,7 +15,8 @@ int main(argc,argv)char**argv; {
 	if(argc>=2)do {
 			Argv=argv;
 			fmt=format;
-			while(c=NEXT(fmt))switch(c) {
+			while(c=NEXT(fmt))
+				switch(c) {
 				case'\\':
 					switch(c=NEXT(fmt)) {
 					case'n':
@@ -121,7 +122,8 @@ enum States{start,intscan,hexscan,fracscan,expstart,expscan};
 atonum(p)register char*p; {
 	register state=(int)start,c;
 	unsigned int i=0,ioct =0;
-	unsigned int sign=1,octal=0,fexp=0,sexp=1,exp=0;switch(c=*p++) {
+	unsigned int sign=1,octal=0,fexp=0,sexp=1,exp=0;
+	switch(c=*p++) {
 		case'+':
 			c=*p++;
 			break;
@@ -150,7 +152,8 @@ atonum(p)register char*p; {
 	default:
 		return lexconst(c,0,0);
 	}
-	for(;; c=*p++)switch(state) {
+	for(;; c=*p++)
+		switch(state) {
 		case start:
 			if(octal&&(c=='x'||c=='X')) {
 				state=(int)hexscan;
