@@ -15,8 +15,7 @@ char in[512];
 char out[512];
 extern errno;
 long lseek();
-int main(argc,argv)char **argv;
-{
+int main(argc,argv)char **argv; {
 	int register r,w,p;
 	struct stat buf;
 	while(argc>1&&argv[1][0]=='-') {
@@ -73,8 +72,7 @@ int main(argc,argv)char **argv;
 	}
 }
 
-stash(p)
-{
+stash(p) {
 	int k;int i;int d;d=t?16:p;
 	for(i=0;i<p;i+=d)
 		for(k=0;k<n;k++)
