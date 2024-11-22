@@ -5,8 +5,7 @@
 
 char line[N];
 FILE *input;
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	register i,c;
 	input=stdin;
 	do {
