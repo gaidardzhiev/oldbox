@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(argc,argv)char**argv;
-{
+int main(argc,argv)char**argv; {
 	register char*p1,*p2,*p3;
 	if(argc<2) {
 		putchar('\n');
