@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(argc,argv)int argc;char*argv[];
-{
+int main(argc,argv)int argc;char*argv[]; {
 	int nicarg=10;
 	extern errno;
 	extern char*sys_errlist[];
