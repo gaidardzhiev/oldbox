@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -36,12 +36,13 @@ man:
 	echo ps.c - process status information
 	echo grep.c - global regular expression print
 	echo du.c - estimate file space usage
-	echo rm.c - removes files
-	echo ascii2hex.c - converts ASCII characters to their hexadecimal representation
-	echo hexdump.c - displays file content in hex
+	echo rm.c - remove files
+	echo ascii2hex.c - convert ASCII characters to their hexadecimal representation
+	echo hexdump.c - display file content in hex
 	echo false.c - do nothing unsuccessfully
 	echo replace.c - regular expression pattern locator and change executor
-	echo readelf.c - displays information about ELF files
-	echo strings.c - prints sequences of printable characters
-	echo ls.c - lists directory contents
-	echo xoda.c - dumps files in hex octal decimal or ASCII
+	echo readelf.c - display information about ELF files
+	echo strings.c - print sequences of printable characters
+	echo ls.c - list directory contents
+	echo xoda.c - dump files in hex octal decimal or ASCII
+	echo id.c - print real and effective user and group IDs
