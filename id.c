@@ -38,8 +38,9 @@ void groups() {
 	printf("\n");
 }
 
-main() {
+int main() {
 	uid();
 	euid();
 	groups();
+	return 0;
 }
