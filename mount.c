@@ -3,13 +3,13 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-#define	NMOUNT	1024
+#define	MNT	1024
 #define	NAMSIZ	2048
 
 struct mtab {
 	char file[NAMSIZ];
 	char spec[NAMSIZ];
-} mtab[NMOUNT];
+} mtab[MNT];
 
 int main(argc,argv)char **argv; {
 	register int ro;
@@ -17,9 +17,9 @@ int main(argc,argv)char **argv; {
 	register char *np;
 	int mf;
 	mf=open("/etc/mtab",0);
-	read(mf, (char*)mtab,NMOUNT*2*NAMSIZ);
+	read(mf, (char*)mtab,MNT*2*NAMSIZ);
 	if(argc==1) {
-		for(mp=mtab; mp<&mtab[NMOUNT]; mp++)
+		for(mp=mtab; mp<&mtab[MNT]; mp++)
 			if(mp->file[0])printf("%s on %s\n",mp->spec,mp->file);
 		exit(0);
 	}
@@ -40,13 +40,13 @@ int main(argc,argv)char **argv; {
 	while(np>argv[1]&&*--np!='/');
 	if(*np=='/')np++;
 	argv[1]=np;
-	for(mp=mtab; mp<&mtab[NMOUNT]; mp++) {
+	for(mp=mtab; mp<&mtab[MNT]; mp++) {
 		if(mp->file[0]==0) {
 			for(np=mp->spec; np<&mp->spec[NAMSIZ-1];)
 				if((*np++=*argv[1]++)==0)argv[1]--;
 			for(np=mp->file; np<&mp->file[NAMSIZ-1];)
 				if((*np++=*argv[2]++)==0)argv[2]--;
-			mp=&mtab[NMOUNT];
+			mp=&mtab[MNT];
 			while((--mp)->file[0]==0);
 			mf=creat("/etc/mtab",0644);
 			write(mf, (char*)mtab, (mp-mtab+1)*2*NAMSIZ);
