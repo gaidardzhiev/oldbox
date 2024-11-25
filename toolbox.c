@@ -8,15 +8,15 @@ int main(int argc, char *argv[]) {
 		printf("usage: %s <echo|cat|cp|basename|kill|ln|mount|nice|printf|rev|sleep|sync|tee|touch|tr|true|tty|umount|wc|yes|shell|pwd|ps|grep|du|rm|ascii2hex|hexdump|false|replace|readelf|strings|ls|xoda|id> <options>\n", argv[0]);
 		return 1;
 	}
-	char command[2048];
-	snprintf (command, sizeof (command), "%s/%s", dir, argv[1]);
+	char tool[2048];
+	snprintf (tool, sizeof (tool), "%s/%s", dir, argv[1]);
 	for (int i=2; i < argc; i++) {
-		strcat(command, " ");
-		strcat(command, argv[i]);
+		strcat(tool, " ");
+		strcat(tool, argv[i]);
 	}
 	if (strcmp(argv[1], "printf") == 0) {
-		strcat(command, " \"\\n\"");
+		strcat(tool, " \"\\n\"");
 	}
-	system(command);
+	system(tool);
 	return 0;
 }
