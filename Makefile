@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id toolbox
 all: $(BINS)
 
 $(BINS): %: %.c
