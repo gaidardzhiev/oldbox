@@ -11,7 +11,7 @@ void ascii2hex(const char*in) {
 }
 
 int main() {
-	char in[8094];
+	char in[65536];
 	printf(HEX);
 	fgets(in,sizeof(in),stdin);
 	in[strcspn(in,"\n")]=0;
