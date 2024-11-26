@@ -3,21 +3,21 @@
 
 #define N 4096
 
-char line[N];
-FILE *input;
+char l[N];
+FILE *in;
 int main(argc,argv)char**argv; {
 	register i,c;
-	input=stdin;
+	in=stdin;
 	do {
 		if(argc>1) {
-			if((input=fopen(argv[1],"r"))==NULL) {
+			if((in=fopen(argv[1],"r"))==NULL) {
 				fprintf(stderr,"rev: cannot open %s\n",argv[1]);
 				exit(1);
 			}
 		}
 		for(;;) {
 			for(i=0; i<N; i++) {
-				line[i]=c=getc(input);
+				l[i]=c=getc(in);
 				switch(c) {
 				case EOF:
 					goto eof;
@@ -28,11 +28,11 @@ int main(argc,argv)char**argv; {
 				}
 				break;
 			}
-			while(--i>=0)putc(line[i],stdout);
+			while(--i>=0)putc(l[i],stdout);
 			putc('\n',stdout);
 		}
 eof:
-		fclose(input);
+		fclose(in);
 		argc--;
 		argv++;
 	} while(argc>1);
