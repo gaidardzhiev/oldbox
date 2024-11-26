@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define MAX_CMD_LENGTH 2048
+#define MCL 2048
 #define MAX_ARG_LENGTH 128
 
 void execute_command(char*command) {
@@ -36,7 +36,7 @@ void execute_command(char*command) {
 }
 
 int main() {
-	char command[MAX_CMD_LENGTH];
+	char command[MCL];
 	while(1) {
 		printf("shell# ");
 		if(fgets(command,sizeof(command),stdin)==NULL) {
