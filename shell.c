@@ -6,15 +6,15 @@
 #include <sys/wait.h>
 
 #define MCL 2048
-#define MAX_ARG_LENGTH 128
+#define MAL 128
 
-void execute_command(char*command) {
-	char*args[MAX_ARG_LENGTH];
+void ec(char*c) {
+	char*args[MAL];
 	pid_t pid,wpid;
 	int status;
-	char*token=strtok(command," \n");
+	char*token=strtok(c," \n");
 	int i=0;
-	while(token!=NULL&&i<MAX_ARG_LENGTH-1) {
+	while(token!=NULL&&i<MAL-1) {
 		args[i++]=token;
 		token=strtok(NULL," \n");
 	}
@@ -36,16 +36,16 @@ void execute_command(char*command) {
 }
 
 int main() {
-	char command[MCL];
+	char c[MCL];
 	while(1) {
 		printf("shell# ");
-		if(fgets(command,sizeof(command),stdin)==NULL) {
+		if(fgets(c,sizeof(c),stdin)==NULL) {
 			break;
 		}
-		if(strcmp(command,"exit\n")==0) {
+		if(strcmp(c,"exit\n")==0) {
 			break;
 		}
-		execute_command(command);
+		ec(c);
 	}
 	return 0;
 }
