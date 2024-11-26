@@ -10,7 +10,7 @@
 
 void ec(char*c) {
 	char*a[MAL];
-	pid_t pid,wpid;
+	pid_t p,wpid;
 	int status;
 	char*token=strtok(c," \n");
 	int i=0;
@@ -19,18 +19,18 @@ void ec(char*c) {
 		token=strtok(NULL," \n");
 	}
 	a[i]=NULL;
-	if((pid=fork())==-1) {
+	if((p=fork())==-1) {
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
-	if(pid==0) {
+	if(p==0) {
 		if(execvp(a[0],a)==-1) {
 			perror("exec");
 			exit(EXIT_FAILURE);
 		}
 	} else {
 		do {
-			wpid=waitpid(pid, &status,WUNTRACED);
+			wpid=waitpid(p, &status,WUNTRACED);
 		} while(!WIFEXITED(status)&&!WIFSIGNALED(status));
 	}
 }
