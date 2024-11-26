@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
-char*ttyname();
-int main(argc,argv)char**argv; {
-	register char *p;
-	p=ttyname(0);
-	if(argc==2&&!strcmp(argv[1],"-s"));
-	else printf("%s\n",(p?p:"not a tty"));
-	exit(p?0:1);
+int main(int argc, char **argv) {
+	char*ttyName=ttyname(STDIN_FILENO);
+	if (argc==2&&strcmp(argv[1],"-s")==0) {
+	} else {
+		printf("%s\n", ttyName ? ttyName : "not a tty");
+	}
+	return ttyName ? EXIT_SUCCESS : EXIT_FAILURE;
 }
