@@ -1,33 +1,36 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(argc,argv)char**argv; {
-	register signo,pid,res;
-	int errlev;
-	extern char *sys_errlist[];
-	extern errno;
-	errlev=0;
-	if(argc<=1) {
-usage:
-		printf("usage: kill <SIG> <PID>\n");
-		exit(2);
+void fusage() {
+	printf("usage: kill <SIG> <PID>\n");
+	exit(EXIT_FAILURE);
+}
+
+int main(int argc, char **argv) {
+	int sign = SIGTERM;
+	int error = 0;
+	if (argc < 2) {
+		fusage();
 	}
-	if(*argv[1]=='-') {
-		signo = atoi(argv[1]+1);
+	if (argv[1][0] == '-') {
+		sign = atoi(argv[1] + 1);
 		argc--;
 		argv++;
-	} else signo=SIGTERM;
+	}
 	argv++;
-	while(argc>1) {
-		if(**argv<'0'||**argv>'9')goto usage;
-		res=kill(pid=atoi(*argv),signo);
-		if(res<0) {
-			printf("%u: %s\n",pid,sys_errlist[errno]);
-			errlev=1;
+	while (argc > 1) {
+		int pid = atoi(*argv);
+		if (pid <= 0) {
+			fusage();
+		}
+		if (kill(pid, sign) < 0) {
+			perror("error sending signal");
+			error = 1;
 		}
 		argc--;
 		argv++;
 	}
-	return(errlev);
+	return error;
 }
