@@ -9,22 +9,22 @@
 #define MAL 128
 
 void ec(char*c) {
-	char*args[MAL];
+	char*a[MAL];
 	pid_t pid,wpid;
 	int status;
 	char*token=strtok(c," \n");
 	int i=0;
 	while(token!=NULL&&i<MAL-1) {
-		args[i++]=token;
+		a[i++]=token;
 		token=strtok(NULL," \n");
 	}
-	args[i]=NULL;
+	a[i]=NULL;
 	if((pid=fork())==-1) {
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
 	if(pid==0) {
-		if(execvp(args[0],args)==-1) {
+		if(execvp(a[0],a)==-1) {
 			perror("exec");
 			exit(EXIT_FAILURE);
 		}
