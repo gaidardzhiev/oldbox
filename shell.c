@@ -12,11 +12,11 @@ void ec(char*c) {
 	char*a[MAL];
 	pid_t p,w;
 	int s;
-	char*token=strtok(c," \n");
+	char*t=strtok(c," \n");
 	int i=0;
-	while(token!=NULL&&i<MAL-1) {
-		a[i++]=token;
-		token=strtok(NULL," \n");
+	while(t!=NULL&&i<MAL-1) {
+		a[i++]=t;
+		t=strtok(NULL," \n");
 	}
 	a[i]=NULL;
 	if((p=fork())==-1) {
