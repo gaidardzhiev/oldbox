@@ -7,76 +7,93 @@
 #include <errno.h>
 #include <fcntl.h>
 
-int openf[20]= {1};
-int n=1;
-int t=0;
-int aflag;
-char in[512];
-char out[512];
-extern errno;
-long lseek();
-int main(argc,argv)char **argv; {
-	int register r,w,p;
-	struct stat buf;
-	while(argc>1&&argv[1][0]=='-') {
-		switch(argv[1][1]) {
-			case'a':
-				aflag++;
-				break;
-			case'i':
-			case0:
-				signal(SIGINT,SIG_IGN);
+#define MAX 20
+#define BUF 512
+
+int fd[MAX] = {1};
+int fc = 1;
+int iscd = 0;
+int af = 0;
+char ib[BUF];
+char ob[BUF];
+
+void s(int size);
+void err(const char *m);
+
+int main(int argc, char **argv) {
+	struct stat fi;
+	int rb, wb, cf;
+	while (argc > 1 && argv[1][0] == '-') {
+		switch (argv[1][1]) {
+		case 'a':
+			af++;
+			break;
+		case 'i':
+		case '0':
+			signal(SIGINT, SIG_IGN);
+			break;
 		}
 		argv++;
 		argc--;
 	}
-	fstat(1,&buf);
-	t=(buf.st_mode&S_IFMT)==S_IFCHR;
-	if(lseek(1,0L,1)==-1&&errno==ESPIPE)t++;
-	while(argc-->1)
-	{
-		if(aflag){openf[n]=open(argv[1],1);
-			if(openf[n]<0)openf[n]=creat(argv[1],0666);
-			lseek(openf[n++],0L,2);
+	fstat(1, &fi);
+	iscd = (fi.st_mode & S_IFMT) == S_IFCHR;
+	if (lseek(1, 0L, SEEK_CUR) == -1 && errno == ESPIPE) {
+		iscd++;
+	}
+	while (argc-- > 1) {
+		if (af) {
+			fd[fc] = open(argv[1], O_WRONLY);
+			if (fd[fc] < 0) {
+				fd[fc] = creat(argv[1], 0666);
+			}
+			lseek(fd[fc++], 0L, SEEK_END);
+		} else {
+			fd[fc++] = creat(argv[1], 0666);
 		}
-		else openf[n++]=creat(argv[1],0666);
-		if(stat(argv[1],&buf)>=0)
-		{
-			if((buf.st_mode&S_IFMT)==S_IFCHR)t++;
-		}
-		else{puts("tee: cannot open ");
-			puts(argv[1]);
-			puts("\n");
-			n--;
+		if (stat(argv[1], &fi) >= 0) {
+			if ((fi.st_mode & S_IFMT) == S_IFCHR) {
+				iscd++;
+			}
+		} else {
+			err("tee: cannot open ");
+			err(argv[1]);
+			putchar('\n');
+			fc--;
 		}
 		argv++;
 	}
-	r=w=0;
-	for(;;)
-	{
-		for(p=0;p<512;)
-		{
-			if(r>=w)
-			{
-				if(t>0&&p>0)
+	rb = wb = 0;
+	for (;;) {
+		for (cf = 0; cf < BUF;) {
+			if (rb >= wb) {
+				if (iscd > 0 && cf > 0) {
 					break;
-				w=read(0,in,512);
-				r=0;
-				if(w<=0){stash(p);
+				}
+				wb = read(0, ib, BUF);
+				rb = 0;
+				if (wb <= 0) {
+					s(cf);
 					return 0;
 				}
 			}
-			out[p++]=in[r++];
+			ob[cf++] = ib[rb++];
 		}
-		stash(p);
+		s(cf);
 	}
 }
 
-stash(p) {
-	int k;int i;int d;d=t?16:p;
-	for(i=0;i<p;i+=d)
-		for(k=0;k<n;k++)
-			write(openf[k],out+i,d<p-i?d:p-i);
+void s(int size) {
+	int i, k, cs = iscd ? 16 : size;
+	for (i = 0; i < size; i += cs) {
+		for (k = 0; k < fc; k++) {
+			write(fd[k], ob + i, cs < size - i ? cs : size - i);
+		}
+	}
 }
 
-puts(s)char*s;{while(*s)write(2,s++,1);}
+void err(const char *m) {
+	while (*m) {
+		write(2, m++, 1);
+	}
+}
