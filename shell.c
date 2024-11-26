@@ -10,7 +10,7 @@
 
 void ec(char*c) {
 	char*a[MAL];
-	pid_t p,wpid;
+	pid_t p,w;
 	int status;
 	char*token=strtok(c," \n");
 	int i=0;
@@ -30,7 +30,7 @@ void ec(char*c) {
 		}
 	} else {
 		do {
-			wpid=waitpid(p, &status,WUNTRACED);
+			w=waitpid(p, &status,WUNTRACED);
 		} while(!WIFEXITED(status)&&!WIFSIGNALED(status));
 	}
 }
