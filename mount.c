@@ -2,55 +2,57 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <sys/mount.h>
 
-#define	MNT 1024
-#define	TNM 2048
+#define MAX_ENTRIES 1024
+#define NAME_SIZE 2048
 
-struct mtab {
-	char file[TNM];
-	char spec[TNM];
-} mtab[MNT];
+struct mount_table {
+	char mount_point[NAME_SIZE];
+	char device[NAME_SIZE];
+} mounts[MAX_ENTRIES];
 
-int main(argc,argv)char **argv; {
-	register int ro;
-	register struct mtab *mp;
-	register char *np;
-	int mf;
-	mf=open("/etc/mtab",0);
-	read(mf, (char*)mtab,MNT*2*TNM);
-	if(argc==1) {
-		for(mp=mtab; mp<&mtab[MNT]; mp++)
-			if(mp->file[0])printf("%s on %s\n",mp->spec,mp->file);
+int main(int argument_count, char **argument_values) {
+	int read_only_flag;
+	struct mount_table *current_mount;
+	char *name_pointer;
+	int mount_file;
+//        mount_file = open("/etc/mtab", 0);
+	mount_file = open("/etc/mtab", O_RDONLY);
+	read(mount_file, (char*)mounts, MAX_ENTRIES * 2 * NAME_SIZE);
+	if(argument_count == 1) {
+		for(current_mount = mounts; current_mount < &mounts[MAX_ENTRIES]; current_mount++)
+			if(current_mount->mount_point[0]) printf("%s on %s\n", current_mount->device, current_mount->mount_point);
 		exit(0);
 	}
-	if(argc<3) {
-		fprintf(stderr,"arg count\n");
+	if(argument_count < 3) {
+		fprintf(stderr, "usage: mount <device> <mountpoint>\n");
 		exit(1);
 	}
-	ro=0;
-	if(argc>3)ro++;
-	if(mount(argv[1],argv[2],ro)<0) {
+	read_only_flag = 0;
+	if(argument_count > 3) read_only_flag++;
+//        if(mount(argument_values[1], argument_values[2], read_only_flag) < 0) {
+	if(mount(argument_values[1], argument_values[2], "ext4", read_only_flag, NULL) < 0) {
 		perror("mount");
 		exit(1);
 	}
-	np=argv[1];
-	while(*np++);
-	np--;
-	while(*--np=='/')*np='\0';
-	while(np>argv[1]&&*--np!='/');
-	if(*np=='/')np++;
-	argv[1]=np;
-	for(mp=mtab; mp<&mtab[MNT]; mp++) {
-		if(mp->file[0]==0) {
-			for(np=mp->spec; np<&mp->spec[TNM-1];)
-				if((*np++=*argv[1]++)==0)argv[1]--;
-			for(np=mp->file; np<&mp->file[TNM-1];)
-				if((*np++=*argv[2]++)==0)argv[2]--;
-			mp=&mtab[MNT];
-			while((--mp)->file[0]==0);
-			mf=creat("/etc/mtab",0644);
-			write(mf, (char*)mtab, (mp-mtab+1)*2*TNM);
-			exit;
+	name_pointer = argument_values[1];
+	while(*name_pointer++);
+	name_pointer--;
+	while(*--name_pointer == '/') *name_pointer = '\0';
+	while(name_pointer > argument_values[1] && *--name_pointer != '/');
+	if(*name_pointer == '/') name_pointer++;
+	argument_values[1] = name_pointer;
+	for(current_mount = mounts; current_mount < &mounts[MAX_ENTRIES]; current_mount++) {
+		if(current_mount->mount_point[0] == 0) {
+			for(name_pointer = current_mount->device; name_pointer < &current_mount->device[NAME_SIZE - 1];)
+				if((*name_pointer++ = *argument_values[1]++) == 0) argument_values[1]--;
+			for(name_pointer = current_mount->mount_point; name_pointer < &current_mount->mount_point[NAME_SIZE - 1];)
+				if((*name_pointer++ = *argument_values[2]++) == 0) argument_values[2]--;
+			current_mount = &mounts[MAX_ENTRIES];
+			while((--current_mount)->mount_point[0] == 0);
+			mount_file = creat("/etc/mtab", 0644);
+			write(mount_file, (char*)mounts, (current_mount - mounts + 1) * 2 * NAME_SIZE);
 			exit(0);
 		}
 	}
