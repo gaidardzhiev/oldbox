@@ -11,7 +11,7 @@
 void ec(char*c) {
 	char*a[MAL];
 	pid_t p,w;
-	int status;
+	int s;
 	char*token=strtok(c," \n");
 	int i=0;
 	while(token!=NULL&&i<MAL-1) {
@@ -30,8 +30,8 @@ void ec(char*c) {
 		}
 	} else {
 		do {
-			w=waitpid(p, &status,WUNTRACED);
-		} while(!WIFEXITED(status)&&!WIFSIGNALED(status));
+			w=waitpid(p, &s,WUNTRACED);
+		} while(!WIFEXITED(s)&&!WIFSIGNALED(s));
 	}
 }
 
