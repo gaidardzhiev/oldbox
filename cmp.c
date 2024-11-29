@@ -18,7 +18,7 @@ void cmp(const char *p, const char *q) {
 			break;
 		}
 		if (x != z) {
-			printf("difference at byte position %ld: %02X != %02X\n", s, x, z);
+			printf("difference at %ld: %02X != %02X\n", s, x, z);
 		}
 		s++;
 	}
