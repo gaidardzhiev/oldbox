@@ -3,7 +3,7 @@
 
 #define NEXT(p)(*(p)?*(p)++:0)
 
-char fmtbuf[1024];
+char b[1024];
 double fnum;
 long lnum;
 int atonum(const char *str);
@@ -47,7 +47,7 @@ int main(argc,argv)char**argv; {
 					}
 					break;
 				case'%':
-					p=fmtbuf;
+					p=b;
 					*p++=c;
 					while(c&&(c=NEXT(fmt)))
 						switch(c){
@@ -71,19 +71,19 @@ int main(argc,argv)char**argv; {
 							case'u':
 							case'U':
 								*p++=c;*p=0;
-								if(atonum(NEXT(argv)))printf(fmtbuf, fnum);
-								else printf(fmtbuf,lnum);
+								if(atonum(NEXT(argv)))printf(b, fnum);
+								else printf(b,lnum);
 								c=0;
 								break;
 							case's':
 								*p++=c;
-								*p=0;printf(fmtbuf,NEXT(argv));
+								*p=0;printf(b,NEXT(argv));
 								c=0;
 								break;
 							case'%':
 								*p++=c;
 								*p=0;
-								printf(fmtbuf);
+								printf(b);
 								c=0;
 								break;
 							default:
