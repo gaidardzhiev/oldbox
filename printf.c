@@ -4,7 +4,7 @@
 #define NEXT(p)(*(p)?*(p)++:0)
 
 char b[1024];
-double fnum;
+double f;
 long lnum;
 int atonum(const char *str);
 int main(argc,argv)char**argv; {
@@ -71,7 +71,7 @@ int main(argc,argv)char**argv; {
 							case'u':
 							case'U':
 								*p++=c;*p=0;
-								if(atonum(NEXT(argv)))printf(b, fnum);
+								if(atonum(NEXT(argv)))printf(b, f);
 								else printf(b,lnum);
 								c=0;
 								break;
@@ -113,7 +113,7 @@ double pwrten(exp) register exp; {
 }
 
 lexconst(n,ftype,exp) register n,ftype,exp; {
-	if(ftype)fnum=(double)n*pwrten(exp);
+	if(ftype)f=(double)n*pwrten(exp);
 	else lnum=n;
 	return ftype;
 }
