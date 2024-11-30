@@ -3,7 +3,7 @@
 
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x66\x69\x6C\x65\x6E\x61\x6D\x65\x3E"
 
-void print_hex(const unsigned char*buffer,size_t length) {
+void hex(const unsigned char*buffer,size_t length) {
 	for(size_t i=0; i<length; i++) {
 		printf("%02x ",buffer[i]);
 		if((i+1)%16==0) {
@@ -48,7 +48,7 @@ int main(int argc,char*argv[]) {
 	unsigned char buffer[16];
 	size_t bytesRead;
 	while((bytesRead=fread(buffer,1,sizeof(buffer),file))>0) {
-		print_hex(buffer,bytesRead);
+		hex(buffer,bytesRead);
 	}
 	fclose(file);
 	return EXIT_SUCCESS;
