@@ -1,26 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(argc,argv)char**argv; {
-	register char*p1,*p2,*p3;
-	if(argc<2) {
+int main(int argc, char **argv) {
+	char *p = NULL;
+	char *q = NULL;
+	if (argc < 2) {
 		putchar('\n');
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
-	p1=argv[1];
-	p2=p1;
-	while(*p1) {
-		if(*p1++=='/')p2=p1;
+	q = argv[1];
+	while (*q) {
+		if (*q== '/') {
+			p = q + 1;
+		}
+		q++;
 	}
-	if(argc>2) {
-		for(p3=argv[2]; *p3; p3++);
-		while(p1>p2&&p3>argv[2])
-			if(*--p3!=*--p1)
-				goto output;
-		*p1='\0';
+	if (argc > 2) {
+		char *ca = argv[2];
+		char *ec = ca;
+
+		while (*ec) {
+			ec++;
+		}
+		while (ca > p && ec > ca) {
+			if (*--ec != *--ca) {
+				goto out;
+			}
+		}
+		*ca = '\0';
 	}
-output:
-	puts(p2);
-//	puts(stdout);
-	exit(0);
+out:
+	puts(p);
+	exit(EXIT_SUCCESS);
 }
