@@ -18,7 +18,7 @@ int i(const char *str) {
 void r(const char *p) {
 	char q[LENGTH];
 	snprintf(q,sizeof(q),"%s/%s/stat",PROC,p);
-	FILE*file=fopen(q,"r");
+	FILE *file = fopen(q,"r");
 	if(!file)return;
 	char cmd[LENGTH];
 	int ppid,pgrp,tty_nr;
