@@ -21,8 +21,8 @@ void r(const char *p) {
 	FILE *f = fopen(q,"r");
 	if(!f)return;
 	char c[LENGTH];
-	int ppid,pgrp,tty_nr;
-	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&ppid,&pgrp,&tty_nr);
+	int d,r,tty_nr;
+	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&d,&r,&tty_nr);
 	fclose(f);
 	char t[10];
 	snprintf(t,sizeof(t),"%d",tty_nr);
