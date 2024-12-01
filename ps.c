@@ -24,9 +24,9 @@ void r(const char *p) {
 	int ppid,pgrp,tty_nr;
 	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&ppid,&pgrp,&tty_nr);
 	fclose(f);
-	char tty[10];
-	snprintf(tty,sizeof(tty),"%d",tty_nr);
-	printf("%s\t%s\t%s\n",p,tty,c);
+	char t[10];
+	snprintf(t,sizeof(t),"%d",tty_nr);
+	printf("%s\t%s\t%s\n",p,t,c);
 }
 
 int main()
