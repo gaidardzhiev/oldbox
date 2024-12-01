@@ -20,13 +20,13 @@ void r(const char *p) {
 	snprintf(q,sizeof(q),"%s/%s/stat",PROC,p);
 	FILE *file = fopen(q,"r");
 	if(!file)return;
-	char cmd[LENGTH];
+	char c[LENGTH];
 	int ppid,pgrp,tty_nr;
-	fscanf(file,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",cmd, &ppid, &pgrp, &tty_nr);
+	fscanf(file,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c, &ppid, &pgrp, &tty_nr);
 	fclose(file);
 	char tty[10];
 	snprintf(tty,sizeof(tty),"%d",tty_nr);
-	printf("%s\t%s\t%s\n",p,tty,cmd);
+	printf("%s\t%s\t%s\n",p,tty,c);
 }
 
 int main()
