@@ -3,34 +3,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-void fusage() {
+void u() {
 	printf("usage: kill <SIG> <PID>\n");
 	exit(EXIT_FAILURE);
 }
 
-int main(int argc, char **argv) {
+int main(int c, char **v) {
 	int s = SIGTERM;
-	int error = 0;
-	if (argc < 2) {
-		fusage();
+	int e = 0;
+	if (c < 2) {
+		u();
 	}
-	if (argv[1][0] == '-') {
-		s = atoi(argv[1] + 1);
-		argc--;
-		argv++;
+	if (v[1][0] == '-') {
+		s = atoi(v[1] + 1);
+		c--;
+		v++;
 	}
-	argv++;
-	while (argc > 1) {
-		int pid = atoi(*argv);
+	v++;
+	while (c > 1) {
+		int pid = atoi(*v);
 		if (pid <= 0) {
-			fusage();
+			u();
 		}
 		if (kill(pid, s) < 0) {
 			perror("error sending signal");
-			error = 1;
+			e = 1;
 		}
-		argc--;
-		argv++;
+		c--;
+		v++;
 	}
-	return error;
+	return e;
 }
