@@ -21,11 +21,11 @@ void r(const char *p) {
 	FILE *f = fopen(q,"r");
 	if(!f)return;
 	char c[LENGTH];
-	int d,r,tty_nr;
-	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&d,&r,&tty_nr);
+	int d,r,n;
+	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&d,&r,&n);
 	fclose(f);
 	char t[10];
-	snprintf(t,sizeof(t),"%d",tty_nr);
+	snprintf(t,sizeof(t),"%d",n);
 	printf("%s\t%s\t%s\n",p,t,c);
 }
 
