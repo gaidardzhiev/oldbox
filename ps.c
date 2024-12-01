@@ -29,8 +29,7 @@ void r(const char *p) {
 	printf("%s\t%s\t%s\n",p,t,c);
 }
 
-int main()
-{
+int main() {
 	DIR*dir=opendir(PROC);
 	struct dirent*entry;
 	if(!dir) {
