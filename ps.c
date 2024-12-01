@@ -22,7 +22,7 @@ void r(const char *p) {
 	if(!f)return;
 	char c[LENGTH];
 	int ppid,pgrp,tty_nr;
-	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c, &ppid, &pgrp, &tty_nr);
+	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&ppid,&pgrp,&tty_nr);
 	fclose(f);
 	char tty[10];
 	snprintf(tty,sizeof(tty),"%d",tty_nr);
