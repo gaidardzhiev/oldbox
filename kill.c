@@ -9,13 +9,13 @@ void fusage() {
 }
 
 int main(int argc, char **argv) {
-	int sign = SIGTERM;
+	int s = SIGTERM;
 	int error = 0;
 	if (argc < 2) {
 		fusage();
 	}
 	if (argv[1][0] == '-') {
-		sign = atoi(argv[1] + 1);
+		s = atoi(argv[1] + 1);
 		argc--;
 		argv++;
 	}
@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
 		if (pid <= 0) {
 			fusage();
 		}
-		if (kill(pid, sign) < 0) {
+		if (kill(pid, s) < 0) {
 			perror("error sending signal");
 			error = 1;
 		}
