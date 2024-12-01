@@ -21,11 +21,11 @@ int main(int c, char **v) {
 	}
 	v++;
 	while (c > 1) {
-		int pid = atoi(*v);
-		if (pid <= 0) {
+		int p = atoi(*v);
+		if (p <= 0) {
 			u();
 		}
-		if (kill(pid, s) < 0) {
+		if (kill(p, s) < 0) {
 			perror("error sending signal");
 			e = 1;
 		}
