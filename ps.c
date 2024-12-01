@@ -7,7 +7,7 @@
 #define LENGTH 512
 #define PROC "/proc"
 
-int is_number(const char*str) {
+int i(const char *str) {
 	while(*str) {
 		if(!isdigit(*str))return 0;
 		str++;
@@ -15,10 +15,10 @@ int is_number(const char*str) {
 	return 1;
 }
 
-void read_process_info(const char*pid) {
-	char path[LENGTH];
-	snprintf(path,sizeof(path),"%s/%s/stat",PROC,pid);
-	FILE*file=fopen(path,"r");
+void r(const char *p) {
+	char q[LENGTH];
+	snprintf(q,sizeof(q),"%s/%s/stat",PROC,p);
+	FILE*file=fopen(q,"r");
 	if(!file)return;
 	char cmd[LENGTH];
 	int ppid,pgrp,tty_nr;
@@ -26,7 +26,7 @@ void read_process_info(const char*pid) {
 	fclose(file);
 	char tty[10];
 	snprintf(tty,sizeof(tty),"%d",tty_nr);
-	printf("%s\t%s\t%s\n",pid,tty,cmd);
+	printf("%s\t%s\t%s\n",p,tty,cmd);
 }
 
 int main()
@@ -39,8 +39,8 @@ int main()
 	}
 	printf("pid\ttty\tcmd\n");
 	while((entry=readdir(dir))!=NULL) {
-		if(is_number(entry->d_name)) {
-			read_process_info(entry->d_name);
+		if(i(entry->d_name)) {
+			r(entry->d_name);
 		}
 	}
 	closedir(dir);
