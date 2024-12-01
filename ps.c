@@ -18,12 +18,12 @@ int i(const char *str) {
 void r(const char *p) {
 	char q[LENGTH];
 	snprintf(q,sizeof(q),"%s/%s/stat",PROC,p);
-	FILE *file = fopen(q,"r");
-	if(!file)return;
+	FILE *f = fopen(q,"r");
+	if(!f)return;
 	char c[LENGTH];
 	int ppid,pgrp,tty_nr;
-	fscanf(file,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c, &ppid, &pgrp, &tty_nr);
-	fclose(file);
+	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c, &ppid, &pgrp, &tty_nr);
+	fclose(f);
 	char tty[10];
 	snprintf(tty,sizeof(tty),"%d",tty_nr);
 	printf("%s\t%s\t%s\n",p,tty,c);
