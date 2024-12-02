@@ -4,11 +4,11 @@
 #include <stdlib.h>
 
 #define N 512
-#define SIZE  1024
+#define S 1024
 
 typedef struct {
-	char mp[SIZE];
-	char d[SIZE];
+	char mp[S];
+	char d[S];
 } e;
 
 e t[N];
@@ -40,7 +40,7 @@ int main(int c, char** v) {
 		char* w = ce->d;
 		while (*p++ == *w) {
 			if (*w++ == '\0') {
-				for (p = ce->mp; p < &ce->mp[SIZE];) {
+				for (p = ce->mp; p < &ce->mp[S];) {
 					*p++ = '\0';
 				}
 				ce = &t[N];
