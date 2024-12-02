@@ -19,23 +19,23 @@ void h(const char*l, const char*p) {
 	printf("%s",l);
 }
 
-void m(const char*filename,const char*p) {
-	FILE*file=fopen(filename,"r");
-	if(!file) {
+void m(const char*n, const char*p) {
+	FILE*f=fopen(n,"r");
+	if(!f) {
 		fprintf(stderr,E"\n");
 		return;
 	}
 	char b[BUF];
-	while(fgets(b,BUF,file)) {
+	while(fgets(b,BUF,f)) {
 		if(strstr(b,p)) {
 			h(b,p);
 			printf("\n");
 		}
 	}
-	fclose(file);
+	fclose(f);
 }
 
-int main(int c,char*v[]) {
+int main(int c, char*v[]) {
 	if(c!=3) {
 		fprintf(stderr,P"\n",v[0]);
 		return EXIT_FAILURE;
