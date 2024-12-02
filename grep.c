@@ -19,7 +19,7 @@ void h(const char*l, const char*p) {
 	printf("%s",l);
 }
 
-void match(const char*filename,const char*p) {
+void m(const char*filename,const char*p) {
 	FILE*file=fopen(filename,"r");
 	if(!file) {
 		fprintf(stderr,STDERR"\n");
@@ -35,11 +35,11 @@ void match(const char*filename,const char*p) {
 	fclose(file);
 }
 
-int main(int argc,char*argv[]) {
-	if(argc!=3) {
-		fprintf(stderr,HEX"\n",argv[0]);
+int main(int c,char*v[]) {
+	if(c!=3) {
+		fprintf(stderr,HEX"\n",v[0]);
 		return EXIT_FAILURE;
 	}
-	match(argv[2],argv[1]);
+	m(v[2],v[1]);
 	return EXIT_SUCCESS;
 }
