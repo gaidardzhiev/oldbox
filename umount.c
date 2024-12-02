@@ -16,10 +16,10 @@ e t[NMNT];
 int main(int c, char** v) {
 	e* ce;
 	char* p;
-	int mount_file;
+	int mf;
 	sync();
-	mount_file = open("/etc/mtab", O_RDONLY);
-	read(mount_file, (char*)t, NMNT * sizeof(e));
+	mf = open("/etc/mtab", O_RDONLY);
+	read(mf, (char*)t, NMNT * sizeof(e));
 	if (c != 2) {
 		fprintf(stderr, "usage: %s <mount_point>\n", v[0]);
 		return EXIT_FAILURE;
@@ -45,8 +45,8 @@ int main(int c, char** v) {
 				}
 				ce = &t[NMNT];
 				while ((--ce)->mp[0] == '\0');
-				mount_file = creat("/etc/mtab", 0644);
-				write(mount_file, (char*)t, (ce - t + 1) * sizeof(e));
+				mf = creat("/etc/mtab", 0644);
+				write(mf, (char*)t, (ce - t + 1) * sizeof(e));
 				return EXIT_SUCCESS;
 			}
 		}
