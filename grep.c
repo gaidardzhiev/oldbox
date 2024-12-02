@@ -25,10 +25,10 @@ void m(const char*filename,const char*p) {
 		fprintf(stderr,E"\n");
 		return;
 	}
-	char buffer[BUF];
-	while(fgets(buffer,BUF,file)) {
-		if(strstr(buffer,p)) {
-			h(buffer,p);
+	char b[BUF];
+	while(fgets(b,BUF,file)) {
+		if(strstr(b,p)) {
+			h(b,p);
 			printf("\n");
 		}
 	}
