@@ -3,48 +3,61 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-#define	NMOUNT	512
-#define	NAMSIZ	1024
+#define NMNT  512
+#define SIZE  1024
 
-struct mtab {
-	char file[NAMSIZ];
-	char spec[NAMSIZ];
-} mtab[NMOUNT];
+typedef struct {
+	char mp[SIZE];
+	char device[SIZE];
+} MountEntry;
 
-int main(argc, argv)char**argv; {
-	register struct mtab*mp;
-	register char*p1,*p2;
-	int mf;
+MountEntry mount_table[NMNT];
+
+int main(int argc, char** argv) {
+	MountEntry* current_entry;
+	char* path_ptr;
+	int mount_file;
+
 	sync();
-	mf=open("/etc/mtab",0);
-	read(mf, (char*)mtab,NMOUNT*2*NAMSIZ);
-	if(argc!=2) {
-		printf("arg count\n");
-		return(1);
+	mount_file = open("/etc/mtab", O_RDONLY);
+	read(mount_file, (char*)mount_table, NMNT * sizeof(MountEntry));
+
+	if (argc != 2) {
+		fprintf(stderr, "usage: %s <mount_point>\n", argv[0]);
+		return EXIT_FAILURE;
 	}
-	if(umount(argv[1])<0) {
-		perror("umount");
-		return(1);
+
+	if (umount(argv[1]) < 0) {
+		perror("failed to unmount...");
+		return EXIT_FAILURE;
 	}
-	p1=argv[1];
-	while(*p1++);
-	p1--;
-	while(*--p1=='/')*p1='\0';
-	while(p1>argv[1]&&*--p1!='/');
-	if(*p1=='/')p1++;
-	argv[1]=p1;
-	for(mp=mtab; mp<&mtab[NMOUNT]; mp++) {
-		p1=argv[1];
-		p2=&mp->spec[0];
-		while(*p1++==*p2)if(*p2++==0) {
-				for(p1=mp->file; p1<&mp->file[NAMSIZ*2];)*p1++=0;
-				mp=&mtab[NMOUNT];
-				while((--mp)->file[0]==0);
-				mf=creat("/etc/mtab",0644);
-				write(mf, (char*)mtab, (mp-mtab+1)*2*NAMSIZ);
-				return(0);
+
+	path_ptr = argv[1];
+	while (*path_ptr++);
+	path_ptr--;
+	while (path_ptr > argv[1] && *--path_ptr == '/') *path_ptr = '\0';
+	while (path_ptr > argv[1] && *--path_ptr != '/');
+	if (*path_ptr == '/') path_ptr++;
+	argv[1] = path_ptr;
+
+	for (current_entry = mount_table; current_entry < &mount_table[NMNT]; current_entry++) {
+		path_ptr = argv[1];
+		char* device_ptr = current_entry->device;
+
+		while (*path_ptr++ == *device_ptr) {
+			if (*device_ptr++ == '\0') {
+				for (path_ptr = current_entry->mp; path_ptr < &current_entry->mp[SIZE];) {
+					*path_ptr++ = '\0';
+				}
+				current_entry = &mount_table[NMNT];
+				while ((--current_entry)->mp[0] == '\0');
+				mount_file = creat("/etc/mtab", 0644);
+				write(mount_file, (char*)mount_table, (current_entry - mount_table + 1) * sizeof(MountEntry));
+				return EXIT_SUCCESS;
 			}
+		}
 	}
-	printf("%s not in mount table\n",argv[1]);
-	return(1);
+
+	fprintf(stderr, "%s not found in mount table\n", argv[1]);
+	return EXIT_FAILURE;
 }
