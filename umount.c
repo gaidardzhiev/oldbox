@@ -9,9 +9,9 @@
 typedef struct {
 	char mp[S];
 	char d[S];
-} e;
+} 
 
-e t[N];
+e;e t[N];
 
 int main(int c, char** v) {
 	e* ce;
