@@ -37,9 +37,9 @@ int main(int c, char** v) {
 	v[1] = p;
 	for (ce = t; ce < &t[NMNT]; ce++) {
 		p = v[1];
-		char* device_ptr = ce->d;
-		while (*p++ == *device_ptr) {
-			if (*device_ptr++ == '\0') {
+		char* w = ce->d;
+		while (*p++ == *w) {
+			if (*w++ == '\0') {
 				for (p = ce->mp; p < &ce->mp[SIZE];) {
 					*p++ = '\0';
 				}
