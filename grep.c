@@ -8,15 +8,15 @@
 #define STDERR "\x63\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x6F\x70\x65\x6E\x20\x66\x69\x6C\x65"
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x70\x61\x74\x74\x65\x72\x6E\x3E\x20\x3C\x66\x69\x6C\x65\x6E\x61\x6D\x65\x3E"
 
-void h(const char*line,const char*pattern) {
-	const char*pos=line;
+void h(const char*l, const char*pattern) {
+	const char*pos=l;
 	while((pos=strstr(pos,pattern))!=NULL) {
-		fwrite(line,1,pos-line,stdout);
+		fwrite(l,1,pos-l,stdout);
 		printf(GREEN"%.*s"RESET, (int)strlen(pattern),pos);
 		pos+=strlen(pattern);
-		line=pos;
+		l=pos;
 	}
-	printf("%s",line);
+	printf("%s",l);
 }
 
 void match(const char*filename,const char*pattern) {
