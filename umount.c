@@ -15,37 +15,33 @@ e t[NMNT];
 
 int main(int c, char** v) {
 	e* ce;
-	char* path_ptr;
+	char* p;
 	int mount_file;
-
 	sync();
 	mount_file = open("/etc/mtab", O_RDONLY);
 	read(mount_file, (char*)t, NMNT * sizeof(e));
-
 	if (c != 2) {
 		fprintf(stderr, "usage: %s <mount_point>\n", v[0]);
 		return EXIT_FAILURE;
 	}
-
 	if (umount(v[1]) < 0) {
 		perror("failed to unmount...");
 		return EXIT_FAILURE;
 	}
-
-	path_ptr = v[1];
-	while (*path_ptr++);
-	path_ptr--;
-	while (path_ptr > v[1] && *--path_ptr == '/') *path_ptr = '\0';
-	while (path_ptr > v[1] && *--path_ptr != '/');
-	if (*path_ptr == '/') path_ptr++;
-	v[1] = path_ptr;
+	p = v[1];
+	while (*p++);
+	p--;
+	while (p > v[1] && *--p == '/') *p = '\0';
+	while (p > v[1] && *--p != '/');
+	if (*p == '/') p++;
+	v[1] = p;
 	for (ce = t; ce < &t[NMNT]; ce++) {
-		path_ptr = v[1];
+		p = v[1];
 		char* device_ptr = ce->d;
-		while (*path_ptr++ == *device_ptr) {
+		while (*p++ == *device_ptr) {
 			if (*device_ptr++ == '\0') {
-				for (path_ptr = ce->mp; path_ptr < &ce->mp[SIZE];) {
-					*path_ptr++ = '\0';
+				for (p = ce->mp; p < &ce->mp[SIZE];) {
+					*p++ = '\0';
 				}
 				ce = &t[NMNT];
 				while ((--ce)->mp[0] == '\0');
@@ -55,7 +51,6 @@ int main(int c, char** v) {
 			}
 		}
 	}
-
 	fprintf(stderr, "%s not found in mount table\n", v[1]);
 	return EXIT_FAILURE;
 }
