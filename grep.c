@@ -8,7 +8,7 @@
 #define STDERR "\x63\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x6F\x70\x65\x6E\x20\x66\x69\x6C\x65"
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x70\x61\x74\x74\x65\x72\x6E\x3E\x20\x3C\x66\x69\x6C\x65\x6E\x61\x6D\x65\x3E"
 
-void highlight(const char*line,const char*pattern) {
+void h(const char*line,const char*pattern) {
 	const char*pos=line;
 	while((pos=strstr(pos,pattern))!=NULL) {
 		fwrite(line,1,pos-line,stdout);
@@ -28,7 +28,7 @@ void match(const char*filename,const char*pattern) {
 	char buffer[BUFFER];
 	while(fgets(buffer,BUFFER,file)) {
 		if(strstr(buffer,pattern)) {
-			highlight(buffer,pattern);
+			h(buffer,pattern);
 			printf("\n");
 		}
 	}
