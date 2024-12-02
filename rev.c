@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 4096
+#define X 4096
 
-char l[N];
+char l[X];
 FILE *in;
-int main(z,argv)char**argv; {
+int main(z,x)char**x; {
 	register i,c;
 	in=stdin;
 	do {
 		if(z>1) {
-			if((in=fopen(argv[1],"r"))==NULL) {
-				fprintf(stderr,"rev: cannot open %s\n",argv[1]);
+			if((in=fopen(x[1],"r"))==NULL) {
+				fprintf(stderr,"rev: cannot open %s\n",x[1]);
 				exit(1);
 			}
 		}
 		for(;;) {
-			for(i=0; i<N; i++) {
+			for(i=0; i<X; i++) {
 				l[i]=c=getc(in);
 				switch(c) {
 				case EOF:
@@ -34,6 +34,6 @@ int main(z,argv)char**argv; {
 eof:
 		fclose(in);
 		z--;
-		argv++;
+		x++;
 	} while(z>1);
 }
