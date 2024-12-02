@@ -8,7 +8,7 @@
 
 typedef struct {
 	char mp[SIZE];
-	char device[SIZE];
+	char d[SIZE];
 } MountEntry;
 
 MountEntry mount_table[NMNT];
@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 
 	for (current_entry = mount_table; current_entry < &mount_table[NMNT]; current_entry++) {
 		path_ptr = argv[1];
-		char* device_ptr = current_entry->device;
+		char* device_ptr = current_entry->d;
 
 		while (*path_ptr++ == *device_ptr) {
 			if (*device_ptr++ == '\0') {
