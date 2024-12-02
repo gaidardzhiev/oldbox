@@ -5,6 +5,7 @@
 
 #define N 512
 #define S 1024
+#define H "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x6D\x6F\x75\x6E\x74\x5F\x70\x6F\x69\x6E\x74\x3E"
 
 typedef struct {
 	char mp[S];
@@ -21,7 +22,7 @@ int main(int c, char** v) {
 	mf = open("/etc/mtab", O_RDONLY);
 	read(mf, (char*)t, N * sizeof(e));
 	if (c != 2) {
-		fprintf(stderr, "usage: %s <mount_point>\n", v[0]);
+		fprintf(stderr,H"\n", v[0]);
 		return EXIT_FAILURE;
 	}
 	if (umount(v[1]) < 0) {
