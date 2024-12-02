@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-#define NMNT  512
+#define N 512
 #define SIZE  1024
 
 typedef struct {
@@ -11,7 +11,7 @@ typedef struct {
 	char d[SIZE];
 } e;
 
-e t[NMNT];
+e t[N];
 
 int main(int c, char** v) {
 	e* ce;
@@ -19,7 +19,7 @@ int main(int c, char** v) {
 	int mf;
 	sync();
 	mf = open("/etc/mtab", O_RDONLY);
-	read(mf, (char*)t, NMNT * sizeof(e));
+	read(mf, (char*)t, N * sizeof(e));
 	if (c != 2) {
 		fprintf(stderr, "usage: %s <mount_point>\n", v[0]);
 		return EXIT_FAILURE;
@@ -35,7 +35,7 @@ int main(int c, char** v) {
 	while (p > v[1] && *--p != '/');
 	if (*p == '/') p++;
 	v[1] = p;
-	for (ce = t; ce < &t[NMNT]; ce++) {
+	for (ce = t; ce < &t[N]; ce++) {
 		p = v[1];
 		char* w = ce->d;
 		while (*p++ == *w) {
@@ -43,7 +43,7 @@ int main(int c, char** v) {
 				for (p = ce->mp; p < &ce->mp[SIZE];) {
 					*p++ = '\0';
 				}
-				ce = &t[NMNT];
+				ce = &t[N];
 				while ((--ce)->mp[0] == '\0');
 				mf = creat("/etc/mtab", 0644);
 				write(mf, (char*)t, (ce - t + 1) * sizeof(e));
