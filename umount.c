@@ -9,18 +9,18 @@
 typedef struct {
 	char mp[SIZE];
 	char d[SIZE];
-} MountEntry;
+} e;
 
-MountEntry mount_table[NMNT];
+e t[NMNT];
 
 int main(int argc, char** argv) {
-	MountEntry* current_entry;
+	e* current_entry;
 	char* path_ptr;
 	int mount_file;
 
 	sync();
 	mount_file = open("/etc/mtab", O_RDONLY);
-	read(mount_file, (char*)mount_table, NMNT * sizeof(MountEntry));
+	read(mount_file, (char*)t, NMNT * sizeof(e));
 
 	if (argc != 2) {
 		fprintf(stderr, "usage: %s <mount_point>\n", argv[0]);
@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
 	if (*path_ptr == '/') path_ptr++;
 	argv[1] = path_ptr;
 
-	for (current_entry = mount_table; current_entry < &mount_table[NMNT]; current_entry++) {
+	for (current_entry = t; current_entry < &t[NMNT]; current_entry++) {
 		path_ptr = argv[1];
 		char* device_ptr = current_entry->d;
 
@@ -49,10 +49,10 @@ int main(int argc, char** argv) {
 				for (path_ptr = current_entry->mp; path_ptr < &current_entry->mp[SIZE];) {
 					*path_ptr++ = '\0';
 				}
-				current_entry = &mount_table[NMNT];
+				current_entry = &t[NMNT];
 				while ((--current_entry)->mp[0] == '\0');
 				mount_file = creat("/etc/mtab", 0644);
-				write(mount_file, (char*)mount_table, (current_entry - mount_table + 1) * sizeof(MountEntry));
+				write(mount_file, (char*)t, (current_entry - t + 1) * sizeof(e));
 				return EXIT_SUCCESS;
 			}
 		}
