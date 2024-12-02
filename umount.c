@@ -14,7 +14,7 @@ typedef struct {
 e t[NMNT];
 
 int main(int c, char** v) {
-	e* current_entry;
+	e* ce;
 	char* path_ptr;
 	int mount_file;
 
@@ -39,20 +39,18 @@ int main(int c, char** v) {
 	while (path_ptr > v[1] && *--path_ptr != '/');
 	if (*path_ptr == '/') path_ptr++;
 	v[1] = path_ptr;
-
-	for (current_entry = t; current_entry < &t[NMNT]; current_entry++) {
+	for (ce = t; ce < &t[NMNT]; ce++) {
 		path_ptr = v[1];
-		char* device_ptr = current_entry->d;
-
+		char* device_ptr = ce->d;
 		while (*path_ptr++ == *device_ptr) {
 			if (*device_ptr++ == '\0') {
-				for (path_ptr = current_entry->mp; path_ptr < &current_entry->mp[SIZE];) {
+				for (path_ptr = ce->mp; path_ptr < &ce->mp[SIZE];) {
 					*path_ptr++ = '\0';
 				}
-				current_entry = &t[NMNT];
-				while ((--current_entry)->mp[0] == '\0');
+				ce = &t[NMNT];
+				while ((--ce)->mp[0] == '\0');
 				mount_file = creat("/etc/mtab", 0644);
-				write(mount_file, (char*)t, (current_entry - t + 1) * sizeof(e));
+				write(mount_file, (char*)t, (ce - t + 1) * sizeof(e));
 				return EXIT_SUCCESS;
 			}
 		}
