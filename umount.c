@@ -13,7 +13,7 @@ typedef struct {
 
 e t[NMNT];
 
-int main(int c, char** argv) {
+int main(int c, char** v) {
 	e* current_entry;
 	char* path_ptr;
 	int mount_file;
@@ -23,25 +23,25 @@ int main(int c, char** argv) {
 	read(mount_file, (char*)t, NMNT * sizeof(e));
 
 	if (c != 2) {
-		fprintf(stderr, "usage: %s <mount_point>\n", argv[0]);
+		fprintf(stderr, "usage: %s <mount_point>\n", v[0]);
 		return EXIT_FAILURE;
 	}
 
-	if (umount(argv[1]) < 0) {
+	if (umount(v[1]) < 0) {
 		perror("failed to unmount...");
 		return EXIT_FAILURE;
 	}
 
-	path_ptr = argv[1];
+	path_ptr = v[1];
 	while (*path_ptr++);
 	path_ptr--;
-	while (path_ptr > argv[1] && *--path_ptr == '/') *path_ptr = '\0';
-	while (path_ptr > argv[1] && *--path_ptr != '/');
+	while (path_ptr > v[1] && *--path_ptr == '/') *path_ptr = '\0';
+	while (path_ptr > v[1] && *--path_ptr != '/');
 	if (*path_ptr == '/') path_ptr++;
-	argv[1] = path_ptr;
+	v[1] = path_ptr;
 
 	for (current_entry = t; current_entry < &t[NMNT]; current_entry++) {
-		path_ptr = argv[1];
+		path_ptr = v[1];
 		char* device_ptr = current_entry->d;
 
 		while (*path_ptr++ == *device_ptr) {
@@ -58,6 +58,6 @@ int main(int c, char** argv) {
 		}
 	}
 
-	fprintf(stderr, "%s not found in mount table\n", argv[1]);
+	fprintf(stderr, "%s not found in mount table\n", v[1]);
 	return EXIT_FAILURE;
 }
