@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFFER 65536
+#define B 65536
 #define GREEN "\033[32m"
 #define RESET "\033[0m"
 #define STDERR "\x63\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x6F\x70\x65\x6E\x20\x66\x69\x6C\x65"
@@ -25,8 +25,8 @@ void m(const char*filename,const char*p) {
 		fprintf(stderr,STDERR"\n");
 		return;
 	}
-	char buffer[BUFFER];
-	while(fgets(buffer,BUFFER,file)) {
+	char buffer[B];
+	while(fgets(buffer,B,file)) {
 		if(strstr(buffer,p)) {
 			h(buffer,p);
 			printf("\n");
