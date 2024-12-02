@@ -13,7 +13,7 @@ typedef struct {
 
 e t[NMNT];
 
-int main(int argc, char** argv) {
+int main(int c, char** argv) {
 	e* current_entry;
 	char* path_ptr;
 	int mount_file;
@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 	mount_file = open("/etc/mtab", O_RDONLY);
 	read(mount_file, (char*)t, NMNT * sizeof(e));
 
-	if (argc != 2) {
+	if (c != 2) {
 		fprintf(stderr, "usage: %s <mount_point>\n", argv[0]);
 		return EXIT_FAILURE;
 	}
