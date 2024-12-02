@@ -8,9 +8,9 @@ int main(int p, char *q[]) {
 		p--;
 		q++;
 	}
-	for (int i=1; i<p; i++) {
-		fputs(q[i],stdout);
-		if (i<p-1) {
+	for (int x=1; x<p; x++) {
+		fputs(q[x],stdout);
+		if (x<p-1) {
 			putchar(' ');
 		}
 	}
