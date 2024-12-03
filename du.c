@@ -20,12 +20,12 @@ long cds(const char*p) {
 	long t=0;
 	struct dirent*entry;
 	struct stat file_stat;
-	DIR*dir=opendir(p);
-	if(dir==NULL) {
+	DIR*d=opendir(p);
+	if(d==NULL) {
 		perror("opendir");
 		return 0;
 	}
-	while((entry=readdir(dir))!=NULL) {
+	while((entry=readdir(d))!=NULL) {
 		if(strcmp(entry->d_name,".")!=0&&strcmp(entry->d_name,"..")!= 0) {
 			char full_path[1024];
 			snprintf(full_path,sizeof(full_path),"%s/%s",p,entry->d_name);
@@ -38,7 +38,7 @@ long cds(const char*p) {
 			}
 		}
 	}
-	closedir(dir);
+	closedir(d);
 	return t;
 }
 
