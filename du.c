@@ -6,7 +6,7 @@
 
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x64\x69\x72\x65\x63\x74\x6F\x72\x79\x3E"
 
-void hrs(long s,char*b) {
+void h(long s,char*b) {
 	const char*u[]= {"B","KB","MB","GB","TB"};
 	int ui=0;
 	while(s>=1024&&ui<4) {
@@ -49,7 +49,7 @@ int main(int z,char*x[]) {
 	}
 	char sb[20];
 	long t=cds(x[1]);
-	hrs(t,sb);
+	h(t,sb);
 	printf("total size of '%s': %s\n",x[1],sb);
 	return EXIT_SUCCESS;
 }
