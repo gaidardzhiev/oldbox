@@ -1,71 +1,73 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(argc,argv)char**argv; {
-	int i,token;
-	register FILE*fp;
-	long linect,wordct,charct;
-	long tlinect=0,twordct=0,tcharct=0;
-	char*wd;
-	register int c;
-	wd="lwc";
-	if(argc>1&&*argv[1]=='-') {
-		wd=++argv[1];
-		argc--;
-		argv++;
+void d(const char* o, long c, long w, long l);
+
+int main(int z, char** x) {
+	int i;
+	FILE* f;
+	long L = 0, W = 0, C = 0;
+	long l, w, c;
+	const char* o = "lwc";
+	int t;
+	if (z > 1 && x[1][0] == '-') {
+		o = x[1] + 1;
+		z--;
+		x++;
 	}
-	i=1;
-	fp=stdin;
-	do {
-		if(argc>1&&(fp=fopen(argv[i],"r"))==NULL) {
-			fprintf(stderr,"wc: can't open %s\n",argv[i]);
+	for (i = 1; i < z; i++) {
+		f = (z > 1) ? fopen(x[i], "r") : stdin;
+		if (f == NULL) {
+			fprintf(stderr, "wc: can't open %s\n", x[i]);
 			continue;
 		}
-		linect=0;
-		wordct=0;
-		charct=0;
-		token=0;
-		for(;;) {
-			c=getc(fp);
-			if(c==EOF)break;
-			charct++;
-			if(' '<c&&c<0177) {
-				if(!token) {
-					wordct++;
-					token++;
+		l = w = c = 0;
+		t = 0;
+		while (1) {
+			int character = getc(f);
+			if (character == EOF) break;
+			c++;
+			if (character > ' ' && character < 127) {
+				if (!t) {
+					w++;
+					t = 1;
 				}
 				continue;
 			}
-			if(c=='\n')linect++;
-			else if(c!=' '&&c!='\t')continue;
-			token=0;
+			if (character == '\n') l++;
+			else if (character != ' ' && character != '\t') continue;
+			t = 0;
 		}
-		wcp(wd,charct,wordct,linect);
-		if(argc>1) {
-			printf(" %s\n",argv[i]);
-		} else printf("\n");
-		fclose(fp);
-		tlinect+=linect;
-		twordct+=wordct;
-		tcharct+=charct;
-	} while(++i<argc);
-	if(argc>2) {
-		wcp(wd,tcharct,twordct,tlinect);
+		d(o, c, w, l);
+		if (z > 2) {
+			printf(" %s\n", x[i]);
+		} else {
+			printf("\n");
+		}
+		fclose(f);
+		L += l;
+		W += w;
+		C += c;
+	}
+	if (z > 2) {
+		d(o, C, W, L);
 		printf(" total\n");
 	}
-	exit(0);
+	return 0;
 }
 
-wcp(wd,charct,wordct,linect)register char*wd;
-long charct;
-long wordct;
-long linect;
-{
-	while(*wd)switch(*wd++) {
-		case'l':
-			printf("%7ld",linect);
+void d(const char* o, long c, long w, long l) {
+	while (*o) {
+		switch (*o++) {
+		case 'l':
+			printf("%7ld", l);
 			break;
-		case'w':
-			printf("%7ld ",wordct);
+		case 'w':
+			printf("%7ld ", w);
 			break;
-		case'c':printf("%7ld",charct);break;}}
+		case 'c':
+			printf("%7ld", c);
+			break;
+		}
+	}
+}
