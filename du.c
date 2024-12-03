@@ -27,11 +27,11 @@ long cds(const char*p) {
 	}
 	while((entry=readdir(d))!=NULL) {
 		if(strcmp(entry->d_name,".")!=0&&strcmp(entry->d_name,"..")!= 0) {
-			char full_path[1024];
-			snprintf(full_path,sizeof(full_path),"%s/%s",p,entry->d_name);
-			if(stat(full_path, &fs)==0) {
+			char fp[1024];
+			snprintf(fp,sizeof(fp),"%s/%s",p,entry->d_name);
+			if(stat(fp, &fs)==0) {
 				if(S_ISDIR(fs.st_mode)) {
-					t+=cds(full_path);
+					t+=cds(fp);
 				} else {
 					t+=fs.st_size;
 				}
