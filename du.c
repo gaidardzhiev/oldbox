@@ -8,12 +8,12 @@
 
 void hrs(long s,char*b) {
 	const char*u[]= {"B","KB","MB","GB","TB"};
-	int unit_index=0;
-	while(s>=1024&&unit_index<4) {
+	int ui=0;
+	while(s>=1024&&ui<4) {
 		s/=1024;
-		unit_index++;
+		ui++;
 	}
-	sprintf(b,"%ld %s",s,u[unit_index]);
+	sprintf(b,"%ld %s",s,u[ui]);
 }
 
 long cds(const char*path) {
