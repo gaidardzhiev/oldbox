@@ -16,7 +16,7 @@ void hrs(long size,char*buffer) {
 	sprintf(buffer,"%ld %s",size,units[unit_index]);
 }
 
-long calculate_directory_size(const char*path) {
+long cds(const char*path) {
 	long total_size=0;
 	struct dirent*entry;
 	struct stat file_stat;
@@ -31,7 +31,7 @@ long calculate_directory_size(const char*path) {
 			snprintf(full_path,sizeof(full_path),"%s/%s",path,entry->d_name);
 			if(stat(full_path, &file_stat)==0) {
 				if(S_ISDIR(file_stat.st_mode)) {
-					total_size+=calculate_directory_size(full_path);
+					total_size+=cds(full_path);
 				} else {
 					total_size+=file_stat.st_size;
 				}
@@ -48,7 +48,7 @@ int main(int argc,char*argv[]) {
 		return EXIT_FAILURE;
 	}
 	char size_buffer[20];
-	long total_size=calculate_directory_size(argv[1]);
+	long total_size=cds(argv[1]);
 	hrs(total_size,size_buffer);
 	printf("total size of '%s': %s\n",argv[1],size_buffer);
 	return EXIT_SUCCESS;
