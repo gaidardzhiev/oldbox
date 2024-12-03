@@ -17,7 +17,7 @@ void hrs(long s,char*b) {
 }
 
 long cds(const char*p) {
-	long total_size=0;
+	long t=0;
 	struct dirent*entry;
 	struct stat file_stat;
 	DIR*dir=opendir(p);
@@ -31,15 +31,15 @@ long cds(const char*p) {
 			snprintf(full_path,sizeof(full_path),"%s/%s",p,entry->d_name);
 			if(stat(full_path, &file_stat)==0) {
 				if(S_ISDIR(file_stat.st_mode)) {
-					total_size+=cds(full_path);
+					t+=cds(full_path);
 				} else {
-					total_size+=file_stat.st_size;
+					t+=file_stat.st_size;
 				}
 			}
 		}
 	}
 	closedir(dir);
-	return total_size;
+	return t;
 }
 
 int main(int argc,char*argv[]) {
@@ -48,8 +48,8 @@ int main(int argc,char*argv[]) {
 		return EXIT_FAILURE;
 	}
 	char size_buffer[20];
-	long total_size=cds(argv[1]);
-	hrs(total_size,size_buffer);
+	long t=cds(argv[1]);
+	hrs(t,size_buffer);
 	printf("total size of '%s': %s\n",argv[1],size_buffer);
 	return EXIT_SUCCESS;
 }
