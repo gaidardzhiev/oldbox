@@ -47,9 +47,9 @@ int main(int z,char*x[]) {
 		fprintf(stderr,HEX"\n",x[0]);
 		return EXIT_FAILURE;
 	}
-	char size_buffer[20];
+	char sb[20];
 	long t=cds(x[1]);
-	hrs(t,size_buffer);
-	printf("total size of '%s': %s\n",x[1],size_buffer);
+	hrs(t,sb);
+	printf("total size of '%s': %s\n",x[1],sb);
 	return EXIT_SUCCESS;
 }
