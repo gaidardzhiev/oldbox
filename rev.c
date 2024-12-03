@@ -1,39 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-#define X 4096
+#define BUF 4096
 
-char l[X];
-FILE *in;
-int main(z,x)char**x; {
-	register i,c;
-	in=stdin;
-	do {
-		if(z>1) {
-			if((in=fopen(x[1],"r"))==NULL) {
-				fprintf(stderr,"rev: cannot open %s\n",x[1]);
-				exit(1);
-			}
+void r(FILE *in) {
+	char l[BUF];
+	int e;
+	while (fgets(l, sizeof(l), in) != NULL) {
+		e = strlen(l);
+		for (int i = e - 1; i >= 0; i--) {
+			putchar(l[i]);
 		}
-		for(;;) {
-			for(i=0; i<X; i++) {
-				l[i]=c=getc(in);
-				switch(c) {
-				case EOF:
-					goto eof;
-				default:
-					continue;
-				case'\n':
-					break;
-				}
-				break;
-			}
-			while(--i>=0)putc(l[i],stdout);
-			putc('\n',stdout);
+	}
+}
+
+int main(int x, char **z) {
+	FILE *f = stdin;
+	if (x > 1) {
+		f = fopen(z[1], "r");
+		if (f == NULL) {
+			fprintf(stderr, "rev: cannot open %s\n", z[1]);
+			exit(EXIT_FAILURE);
 		}
-eof:
-		fclose(in);
-		z--;
-		x++;
-	} while(z>1);
+	}
+	r(f);
+	printf("\n");
+	if (f != stdin) {
+		fclose(f);
+	}
+	return 0;
 }
