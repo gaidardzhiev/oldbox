@@ -19,7 +19,7 @@ void hrs(long s,char*b) {
 long cds(const char*p) {
 	long t=0;
 	struct dirent*entry;
-	struct stat file_stat;
+	struct stat fs;
 	DIR*d=opendir(p);
 	if(d==NULL) {
 		perror("opendir");
@@ -29,11 +29,11 @@ long cds(const char*p) {
 		if(strcmp(entry->d_name,".")!=0&&strcmp(entry->d_name,"..")!= 0) {
 			char full_path[1024];
 			snprintf(full_path,sizeof(full_path),"%s/%s",p,entry->d_name);
-			if(stat(full_path, &file_stat)==0) {
-				if(S_ISDIR(file_stat.st_mode)) {
+			if(stat(full_path, &fs)==0) {
+				if(S_ISDIR(fs.st_mode)) {
 					t+=cds(full_path);
 				} else {
-					t+=file_stat.st_size;
+					t+=fs.st_size;
 				}
 			}
 		}
