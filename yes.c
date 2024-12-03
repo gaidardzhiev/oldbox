@@ -1,5 +1,5 @@
 #include <stdio.h>
 
-int main(argc,argv)char**argv; {
-	for(;;)printf("%s\n",argc>1?argv[1]: "y");
+int main(z,x)char**x; {
+	for(;;)printf("%s\n",z>1?x[1]: "y");
 }
