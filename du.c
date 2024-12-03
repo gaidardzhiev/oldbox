@@ -7,13 +7,13 @@
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x64\x69\x72\x65\x63\x74\x6F\x72\x79\x3E"
 
 void hrs(long s,char*b) {
-	const char*units[]= {"B","KB","MB","GB","TB"};
+	const char*u[]= {"B","KB","MB","GB","TB"};
 	int unit_index=0;
 	while(s>=1024&&unit_index<4) {
 		s/=1024;
 		unit_index++;
 	}
-	sprintf(b,"%ld %s",s,units[unit_index]);
+	sprintf(b,"%ld %s",s,u[unit_index]);
 }
 
 long cds(const char*path) {
