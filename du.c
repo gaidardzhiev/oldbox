@@ -16,11 +16,11 @@ void hrs(long s,char*b) {
 	sprintf(b,"%ld %s",s,u[ui]);
 }
 
-long cds(const char*path) {
+long cds(const char*p) {
 	long total_size=0;
 	struct dirent*entry;
 	struct stat file_stat;
-	DIR*dir=opendir(path);
+	DIR*dir=opendir(p);
 	if(dir==NULL) {
 		perror("opendir");
 		return 0;
@@ -28,7 +28,7 @@ long cds(const char*path) {
 	while((entry=readdir(dir))!=NULL) {
 		if(strcmp(entry->d_name,".")!=0&&strcmp(entry->d_name,"..")!= 0) {
 			char full_path[1024];
-			snprintf(full_path,sizeof(full_path),"%s/%s",path,entry->d_name);
+			snprintf(full_path,sizeof(full_path),"%s/%s",p,entry->d_name);
 			if(stat(full_path, &file_stat)==0) {
 				if(S_ISDIR(file_stat.st_mode)) {
 					total_size+=cds(full_path);
