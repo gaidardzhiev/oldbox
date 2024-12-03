@@ -42,14 +42,14 @@ long cds(const char*p) {
 	return t;
 }
 
-int main(int argc,char*argv[]) {
-	if(argc<2) {
-		fprintf(stderr,HEX"\n",argv[0]);
+int main(int z,char*x[]) {
+	if(z<2) {
+		fprintf(stderr,HEX"\n",x[0]);
 		return EXIT_FAILURE;
 	}
 	char size_buffer[20];
-	long t=cds(argv[1]);
+	long t=cds(x[1]);
 	hrs(t,size_buffer);
-	printf("total size of '%s': %s\n",argv[1],size_buffer);
+	printf("total size of '%s': %s\n",x[1],size_buffer);
 	return EXIT_SUCCESS;
 }
