@@ -6,7 +6,7 @@
 
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x64\x69\x72\x65\x63\x74\x6F\x72\x79\x3E"
 
-void human_readable_size(long size,char*buffer) {
+void hrs(long size,char*buffer) {
 	const char*units[]= {"B","KB","MB","GB","TB"};
 	int unit_index=0;
 	while(size>=1024&&unit_index<4) {
@@ -49,7 +49,7 @@ int main(int argc,char*argv[]) {
 	}
 	char size_buffer[20];
 	long total_size=calculate_directory_size(argv[1]);
-	human_readable_size(total_size,size_buffer);
+	hrs(total_size,size_buffer);
 	printf("total size of '%s': %s\n",argv[1],size_buffer);
 	return EXIT_SUCCESS;
 }
