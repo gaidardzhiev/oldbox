@@ -16,7 +16,7 @@ void h(long s,char*b) {
 	sprintf(b,"%ld %s",s,u[ui]);
 }
 
-long cds(const char*p) {
+long c(const char*p) {
 	long t=0;
 	struct dirent*e;
 	struct stat fs;
@@ -31,7 +31,7 @@ long cds(const char*p) {
 			snprintf(fp,sizeof(fp),"%s/%s",p,e->d_name);
 			if(stat(fp, &fs)==0) {
 				if(S_ISDIR(fs.st_mode)) {
-					t+=cds(fp);
+					t+=c(fp);
 				} else {
 					t+=fs.st_size;
 				}
@@ -48,7 +48,7 @@ int main(int z,char*x[]) {
 		return EXIT_FAILURE;
 	}
 	char sb[20];
-	long t=cds(x[1]);
+	long t=c(x[1]);
 	h(t,sb);
 	printf("total size of '%s': %s\n",x[1],sb);
 	return EXIT_SUCCESS;
