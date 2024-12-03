@@ -18,17 +18,17 @@ void hrs(long s,char*b) {
 
 long cds(const char*p) {
 	long t=0;
-	struct dirent*entry;
+	struct dirent*e;
 	struct stat fs;
 	DIR*d=opendir(p);
 	if(d==NULL) {
 		perror("opendir");
 		return 0;
 	}
-	while((entry=readdir(d))!=NULL) {
-		if(strcmp(entry->d_name,".")!=0&&strcmp(entry->d_name,"..")!= 0) {
+	while((e=readdir(d))!=NULL) {
+		if(strcmp(e->d_name,".")!=0&&strcmp(e->d_name,"..")!= 0) {
 			char fp[1024];
-			snprintf(fp,sizeof(fp),"%s/%s",p,entry->d_name);
+			snprintf(fp,sizeof(fp),"%s/%s",p,e->d_name);
 			if(stat(fp, &fs)==0) {
 				if(S_ISDIR(fs.st_mode)) {
 					t+=cds(fp);
