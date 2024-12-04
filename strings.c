@@ -6,24 +6,24 @@
 
 void strings(FILE *file) {
 	int c;
-	int count = 0;
+	int n = 0;
 	char b[1024];
 	while ((c = fgetc(file)) != EOF) {
 		if (isprint(c)) {
-			b[count++] = c;
-			if (count >= sizeof(b) - 1) {
+			b[n++] = c;
+			if (n >= sizeof(b) - 1) {
 				break;
 			}
 		} else {
-			if (count >= MIN_LENGTH) {
-				b[count] = '\0';
+			if (n >= MIN_LENGTH) {
+				b[n] = '\0';
 				printf("%s\n", b);
 			}
-			count = 0;
+			n = 0;
 		}
 	}
-	if (count >= MIN_LENGTH) {
-		b[count] = '\0';
+	if (n >= MIN_LENGTH) {
+		b[n] = '\0';
 		printf("%s\n", b);
 	}
 }
