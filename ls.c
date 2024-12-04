@@ -15,7 +15,7 @@ void ls(const char *p) {
 		return;
 	}
 	while ((e = readdir(dp)) != NULL) {
-		char f[2048];
+		char f[65536];
 		snprintf(f, sizeof(f), "%s/%s", p, e->d_name);
 		if (stat(f, &s) < 0) {
 			perror("stat");
