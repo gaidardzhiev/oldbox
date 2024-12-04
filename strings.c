@@ -4,11 +4,11 @@
 
 #define MIN 4
 
-void strings(FILE *file) {
+void strings(FILE *f) {
 	int c;
 	int n = 0;
 	char b[1024];
-	while ((c = fgetc(file)) != EOF) {
+	while ((c = fgetc(f)) != EOF) {
 		if (isprint(c)) {
 			b[n++] = c;
 			if (n >= sizeof(b) - 1) {
@@ -34,14 +34,14 @@ int main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 	for (int i = 1; i < argc; i++) {
-		FILE *file = fopen(argv[i], "r");
-		if (!file) {
+		FILE *f = fopen(argv[i], "r");
+		if (!f) {
 			perror("error opening file");
 			continue;
 		}
 		printf( argv[i]);
-		strings(file);
-		fclose(file);
+		strings(f);
+		fclose(f);
 	}
 	return EXIT_SUCCESS;
 }
