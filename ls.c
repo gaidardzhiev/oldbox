@@ -7,16 +7,16 @@
 #include <string.h>
 
 void ls(const char *p) {
-	struct dirent *entry;
+	struct dirent *e;
 	struct stat fileStat;
 	DIR *dp = opendir(p);
 	if (dp == NULL) {
 		perror("opendir");
 		return;
 	}
-	while ((entry = readdir(dp)) != NULL) {
+	while ((e = readdir(dp)) != NULL) {
 		char fullPath[2048];
-		snprintf(fullPath, sizeof(fullPath), "%s/%s", p, entry->d_name);
+		snprintf(fullPath, sizeof(fullPath), "%s/%s", p, e->d_name);
 		if (stat(fullPath, &fileStat) < 0) {
 			perror("stat");
 			continue;
@@ -36,7 +36,7 @@ void ls(const char *p) {
 		struct group  *gr = getgrgid(fileStat.st_gid);
 		printf("	%s %s ", pw->pw_name, gr->gr_name);
 		printf("	%lld ", (long long)fileStat.st_size);
-		printf("	%s\n", entry->d_name);
+		printf("	%s\n", e->d_name);
 	}
 	closedir(dp);
 }
