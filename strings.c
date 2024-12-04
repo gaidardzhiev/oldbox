@@ -7,24 +7,24 @@
 void strings(FILE *file) {
 	int c;
 	int count = 0;
-	char buffer[1024];
+	char b[1024];
 	while ((c = fgetc(file)) != EOF) {
 		if (isprint(c)) {
-			buffer[count++] = c;
-			if (count >= sizeof(buffer) - 1) {
+			b[count++] = c;
+			if (count >= sizeof(b) - 1) {
 				break;
 			}
 		} else {
 			if (count >= MIN_LENGTH) {
-				buffer[count] = '\0';
-				printf("%s\n", buffer);
+				b[count] = '\0';
+				printf("%s\n", b);
 			}
 			count = 0;
 		}
 	}
 	if (count >= MIN_LENGTH) {
-		buffer[count] = '\0';
-		printf("%s\n", buffer);
+		b[count] = '\0';
+		printf("%s\n", b);
 	}
 }
 
