@@ -4,7 +4,7 @@
 
 #define MIN 4
 
-void strings(FILE *f) {
+void s(FILE *f) {
 	int c;
 	int n = 0;
 	char b[1024];
@@ -28,19 +28,19 @@ void strings(FILE *f) {
 	}
 }
 
-int main(int argc, char *argv[]) {
-	if (argc < 2) {
+int main(int z, char *argv[]) {
+	if (z < 2) {
 		fprintf(stderr, "usage: %s <file>\n", argv[0]);
 		return EXIT_FAILURE;
 	}
-	for (int i = 1; i < argc; i++) {
+	for (int i = 1; i < z; i++) {
 		FILE *f = fopen(argv[i], "r");
 		if (!f) {
 			perror("error opening file");
 			continue;
 		}
 		printf( argv[i]);
-		strings(f);
+		s(f);
 		fclose(f);
 	}
 	return EXIT_SUCCESS;
