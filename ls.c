@@ -41,9 +41,9 @@ void ls(const char *p) {
 	closedir(dp);
 }
 
-int main(int argc, char *argv[]) {
-	if (argc > 1) {
-		ls(argv[1]);
+int main(int z, char *x[]) {
+	if (z > 1) {
+		ls(x[1]);
 	} else {
 		ls(".");
 	}
