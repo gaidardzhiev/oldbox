@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define MIN_LENGTH 4
+#define MIN 4
 
 void strings(FILE *file) {
 	int c;
@@ -15,14 +15,14 @@ void strings(FILE *file) {
 				break;
 			}
 		} else {
-			if (n >= MIN_LENGTH) {
+			if (n >= MIN) {
 				b[n] = '\0';
 				printf("%s\n", b);
 			}
 			n = 0;
 		}
 	}
-	if (n >= MIN_LENGTH) {
+	if (n >= MIN) {
 		b[n] = '\0';
 		printf("%s\n", b);
 	}
