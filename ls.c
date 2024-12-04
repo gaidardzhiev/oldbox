@@ -6,17 +6,17 @@
 #include <grp.h>
 #include <string.h>
 
-void ls(const char *path) {
+void ls(const char *p) {
 	struct dirent *entry;
 	struct stat fileStat;
-	DIR *dp = opendir(path);
+	DIR *dp = opendir(p);
 	if (dp == NULL) {
 		perror("opendir");
 		return;
 	}
 	while ((entry = readdir(dp)) != NULL) {
 		char fullPath[2048];
-		snprintf(fullPath, sizeof(fullPath), "%s/%s", path, entry->d_name);
+		snprintf(fullPath, sizeof(fullPath), "%s/%s", p, entry->d_name);
 		if (stat(fullPath, &fileStat) < 0) {
 			perror("stat");
 			continue;
