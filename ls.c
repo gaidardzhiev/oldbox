@@ -15,9 +15,9 @@ void ls(const char *p) {
 		return;
 	}
 	while ((e = readdir(dp)) != NULL) {
-		char fullPath[2048];
-		snprintf(fullPath, sizeof(fullPath), "%s/%s", p, e->d_name);
-		if (stat(fullPath, &s) < 0) {
+		char f[2048];
+		snprintf(f, sizeof(f), "%s/%s", p, e->d_name);
+		if (stat(f, &s) < 0) {
 			perror("stat");
 			continue;
 		}
