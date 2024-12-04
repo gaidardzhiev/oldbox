@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define MIN 4
+#define S 4
 
 void s(FILE *f) {
 	int c;
@@ -15,31 +15,31 @@ void s(FILE *f) {
 				break;
 			}
 		} else {
-			if (n >= MIN) {
+			if (n >= S) {
 				b[n] = '\0';
 				printf("%s\n", b);
 			}
 			n = 0;
 		}
 	}
-	if (n >= MIN) {
+	if (n >= S) {
 		b[n] = '\0';
 		printf("%s\n", b);
 	}
 }
 
-int main(int z, char *argv[]) {
+int main(int z, char *x[]) {
 	if (z < 2) {
-		fprintf(stderr, "usage: %s <file>\n", argv[0]);
+		fprintf(stderr, "usage: %s <file>\n", x[0]);
 		return EXIT_FAILURE;
 	}
 	for (int i = 1; i < z; i++) {
-		FILE *f = fopen(argv[i], "r");
+		FILE *f = fopen(x[i], "r");
 		if (!f) {
 			perror("error opening file");
 			continue;
 		}
-		printf( argv[i]);
+		printf( x[i]);
 		s(f);
 		fclose(f);
 	}
