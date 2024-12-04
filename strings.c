@@ -8,7 +8,6 @@ void strings(FILE *file) {
 	int c;
 	int count = 0;
 	char buffer[1024];
-
 	while ((c = fgetc(file)) != EOF) {
 		if (isprint(c)) {
 			buffer[count++] = c;
@@ -34,7 +33,6 @@ int main(int argc, char *argv[]) {
 		fprintf(stderr, "usage: %s <file>\n", argv[0]);
 		return EXIT_FAILURE;
 	}
-
 	for (int i = 1; i < argc; i++) {
 		FILE *file = fopen(argv[i], "r");
 		if (!file) {
