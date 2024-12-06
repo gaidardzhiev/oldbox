@@ -3,14 +3,14 @@
 
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x66\x69\x6C\x65\x6E\x61\x6D\x65\x3E"
 
-void hex(const unsigned char*buffer,size_t length) {
+void hex(const unsigned char*b,size_t length) {
 	for(size_t i=0; i<length; i++) {
-		printf("%02x ",buffer[i]);
+		printf("%02x ",b[i]);
 		if((i+1)%16==0) {
 			printf(" | ");
 			for(size_t j=i-15; j<=i; j++) {
-				if(buffer[j]>=32&&buffer[j]<=126) {
-					printf("%c",buffer[j]);
+				if(b[j]>=32&&b[j]<=126) {
+					printf("%c",b[j]);
 				} else {
 					printf("•");
 				}
@@ -25,8 +25,8 @@ void hex(const unsigned char*buffer,size_t length) {
 		}
 		printf(" | ");
 		for(size_t j=length-(length%16); j<length; j++) {
-			if(buffer[j]>=32&&buffer[j]<=126) {
-				printf("%c",buffer[j]);
+			if(b[j]>=32&&b[j]<=126) {
+				printf("%c",b[j]);
 			} else {
 				printf("•");
 			}
@@ -45,10 +45,10 @@ int main(int argc,char*argv[]) {
 		perror("error opening file");
 		return EXIT_FAILURE;
 	}
-	unsigned char buffer[16];
+	unsigned char buf[16];
 	size_t bytesRead;
-	while((bytesRead=fread(buffer,1,sizeof(buffer),file))>0) {
-		hex(buffer,bytesRead);
+	while((bytesRead=fread(buf,1,sizeof(buf),file))>0) {
+		hex(buf,bytesRead);
 	}
 	fclose(file);
 	return EXIT_SUCCESS;
