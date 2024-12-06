@@ -3,8 +3,8 @@
 
 #define HEX "\x75\x73\x61\x67\x65\x3A\x20\x25\x73\x20\x3C\x66\x69\x6C\x65\x6E\x61\x6D\x65\x3E"
 
-void hex(const unsigned char*b,size_t length) {
-	for(size_t i=0; i<length; i++) {
+void hex(const unsigned char*b,size_t l) {
+	for(size_t i=0; i<l; i++) {
 		printf("%02x ",b[i]);
 		if((i+1)%16==0) {
 			printf(" | ");
@@ -18,13 +18,13 @@ void hex(const unsigned char*b,size_t length) {
 			printf("\n");
 		}
 	}
-	if(length%16!=0) {
-		size_t padding=16-(length%16);
+	if(l%16!=0) {
+		size_t padding=16-(l%16);
 		for(size_t i=0; i<padding; i++) {
 			printf("   ");
 		}
 		printf(" | ");
-		for(size_t j=length-(length%16); j<length; j++) {
+		for(size_t j=l-(l%16); j<l; j++) {
 			if(b[j]>=32&&b[j]<=126) {
 				printf("%c",b[j]);
 			} else {
