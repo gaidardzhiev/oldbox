@@ -35,12 +35,12 @@ void hex(const unsigned char*b,size_t l) {
 	}
 }
 
-int main(int argc,char*argv[]) {
-	if(argc!=2) {
-		fprintf(stderr,HEX"\n",argv[0]);
+int main(int z,char*x[]) {
+	if(z!=2) {
+		fprintf(stderr,HEX"\n",x[0]);
 		return EXIT_FAILURE;
 	}
-	FILE*file=fopen(argv[1],"rb");
+	FILE*file=fopen(x[1],"rb");
 	if(!file) {
 		perror("error opening file");
 		return EXIT_FAILURE;
