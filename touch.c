@@ -5,16 +5,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-void t(int f, char *n);
-
-int main(z,x)int z;char*x[]; {
-	int i;
-	static int f=1;
-	for(i=1; i<z; ++i)if(strcmp(x[i],"-c"))t(f,x[i]);
-		else f=0;
-}
-
-void t(f,n)int f;char*n; {
+void t(f,n) int f; char*n; {
 	struct stat stbuff;
 	char junk[1];
 	int fd;
@@ -42,4 +33,12 @@ bad:
 create:
 	if((fd=creat(n,0666))<0)goto bad;
 	close(fd);
+}
+
+int main(z,x) int z; char*x[]; {
+	int i;
+	static int f=1;
+	for(i=1; i<z; ++i)
+		if(strcmp(x[i],"-c"))t(f,x[i]);
+		else f=0;
 }
