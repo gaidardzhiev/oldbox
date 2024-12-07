@@ -11,7 +11,7 @@ void t(f,n) int f; char*n; {
 	int fd;
 	if(stat(n, &stbuff)<0)if(f)goto create;
 		else {
-			fprintf(stderr,"touch: file %s does not exist...\n",n);
+			fprintf(stderr,"error...\n",n);
 			return;
 		}
 	if(stbuff.st_size==0)goto create;
