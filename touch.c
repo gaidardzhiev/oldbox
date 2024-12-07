@@ -7,7 +7,7 @@
 
 void t(f,n) int f; char*n; {
 	struct stat stbuff;
-	char junk[1];
+	char j[1];
 	int fd;
 	if(stat(n, &stbuff)<0)if(f)goto create;
 		else {
@@ -16,12 +16,12 @@ void t(f,n) int f; char*n; {
 		}
 	if(stbuff.st_size==0)goto create;
 	if((fd=open(n,2))<0)goto bad;
-	if(read(fd,junk,1)<1) {
+	if(read(fd,j,1)<1) {
 		close(fd);
 		goto bad;
 	}
 	lseek(fd,0L,0);
-	if(write(fd,junk,1)<1) {
+	if(write(fd,j,1)<1) {
 		close(fd);
 		goto bad;
 	}
