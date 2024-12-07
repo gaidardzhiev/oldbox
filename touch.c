@@ -6,15 +6,15 @@
 #include <sys/stat.h>
 
 void t(f,n) int f; char*n; {
-	struct stat stbuff;
+	struct stat sb;
 	char j[1];
 	int fd;
-	if(stat(n, &stbuff)<0)if(f)goto create;
+	if(stat(n, &sb)<0)if(f)goto create;
 		else {
 			fprintf(stderr,"error...\n",n);
 			return;
 		}
-	if(stbuff.st_size==0)goto create;
+	if(sb.st_size==0)goto create;
 	if((fd=open(n,2))<0)goto bad;
 	if(read(fd,j,1)<1) {
 		close(fd);
