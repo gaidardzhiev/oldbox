@@ -7,10 +7,10 @@
 
 void t(int f, char *n);
 
-int main(argc,argv)int argc;char*argv[]; {
+int main(z,x)int z;char*x[]; {
 	int i;
 	static int f=1;
-	for(i=1; i<argc; ++i)if(strcmp(argv[i],"-c"))t(f,argv[i]);
+	for(i=1; i<z; ++i)if(strcmp(x[i],"-c"))t(f,x[i]);
 		else f=0;
 }
 
