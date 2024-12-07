@@ -47,3 +47,6 @@ man:
 	echo xoda.c - dump files in hex octal decimal or ASCII
 	echo id.c - print real and effective user and group IDs
 	echo cmp.c - compare files byte by byte
+
+install:
+	cp toolbox /usr/bin/toolbox
