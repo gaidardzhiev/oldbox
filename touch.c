@@ -5,20 +5,20 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-void touch(int force, char *name);
+void t(int f, char *name);
 
 int main(argc,argv)int argc;char*argv[]; {
 	int i;
-	static int force=1;
-	for(i=1; i<argc; ++i)if(strcmp(argv[i],"-c"))touch(force,argv[i]);
-		else force=0;
+	static int f=1;
+	for(i=1; i<argc; ++i)if(strcmp(argv[i],"-c"))t(f,argv[i]);
+		else f=0;
 }
 
-void touch(force,name)int force;char*name; {
+void t(f,name)int f;char*name; {
 	struct stat stbuff;
 	char junk[1];
 	int fd;
-	if(stat(name, &stbuff)<0)if(force)goto create;
+	if(stat(name, &stbuff)<0)if(f)goto create;
 		else {
 			fprintf(stderr,"touch: file %s does not exist...\n",name);
 			return;
