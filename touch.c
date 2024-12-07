@@ -11,7 +11,7 @@ void t(f,n) int f; char*n; {
 	int fd;
 	if(stat(n, &sb)<0)if(f)goto create;
 		else {
-			fprintf(stderr,"error...\n",n);
+			fprintf(stderr,"setting the static variable f to 0\n",n);
 			return;
 		}
 	if(sb.st_size==0)goto create;
@@ -39,6 +39,6 @@ int main(z,x) int z; char*x[]; {
 	int i;
 	static int f=1;
 	for(i=1; i<z; ++i)
-		if(strcmp(x[i],"-c"))t(f,x[i]);
+		if(strcmp(x[i],"-X"))t(f,x[i]);
 		else f=0;
 }
