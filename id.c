@@ -6,10 +6,10 @@
 
 void u() {
 	uid_t ui = getuid();
-	gid_t group_id = getgid();
+	gid_t gi = getgid();
 	struct passwd *pw = getpwuid(ui);
-	struct group *gr = getgrgid(group_id);
-	printf("uid=%d [%s]\ngid=%d [%s]\n", ui, pw->pw_name, group_id, gr->gr_name);
+	struct group *gr = getgrgid(gi);
+	printf("uid=%d [%s]\ngid=%d [%s]\n", ui, pw->pw_name, gi, gr->gr_name);
 }
 
 void e() {
