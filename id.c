@@ -5,11 +5,11 @@
 #include <grp.h>
 
 void u() {
-	uid_t user_id = getuid();
+	uid_t ui = getuid();
 	gid_t group_id = getgid();
-	struct passwd *pw = getpwuid(user_id);
+	struct passwd *pw = getpwuid(ui);
 	struct group *gr = getgrgid(group_id);
-	printf("uid=%d [%s]\ngid=%d [%s]\n", user_id, pw->pw_name, group_id, gr->gr_name);
+	printf("uid=%d [%s]\ngid=%d [%s]\n", ui, pw->pw_name, group_id, gr->gr_name);
 }
 
 void e() {
