@@ -13,9 +13,9 @@ void u() {
 }
 
 void e() {
-	uid_t effective_user_id = geteuid();
-	struct passwd *p = getpwuid(effective_user_id);
-	printf("euid=%d [%s]\n", effective_user_id, p->pw_name);
+	uid_t e = geteuid();
+	struct passwd *p = getpwuid(e);
+	printf("euid=%d [%s]\n", e, p->pw_name);
 }
 
 void g() {
