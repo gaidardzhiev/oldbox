@@ -19,15 +19,15 @@ void e() {
 }
 
 void g() {
-	gid_t groups[32];
-	int ngroups = 32;
-	getgrouplist(getpwuid(getuid())->pw_name, getgid(), groups, &ngroups);
+	gid_t f[32];
+	int n = 32;
+	getgrouplist(getpwuid(getuid())->pw_name, getgid(), f, &n);
 	printf("groups=");
-	for (int i = 0; i < ngroups; i++) {
-		struct group *gr = getgrgid(groups[i]);
+	for (int i = 0; i < n; i++) {
+		struct group *gr = getgrgid(f[i]);
 		if (gr != NULL) {
-			printf("%d [%s]", groups[i], gr->gr_name);
-			if (i < ngroups - 1) {
+			printf("%d [%s]", f[i], gr->gr_name);
+			if (i < n - 1) {
 				printf("\n");
 			}
 		}
