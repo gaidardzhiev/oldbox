@@ -4,7 +4,7 @@
 #include <pwd.h>
 #include <grp.h>
 
-void uid() {
+void u() {
 	uid_t user_id = getuid();
 	gid_t group_id = getgid();
 	struct passwd *pw = getpwuid(user_id);
@@ -12,13 +12,13 @@ void uid() {
 	printf("uid=%d [%s]\ngid=%d [%s]\n", user_id, pw->pw_name, group_id, gr->gr_name);
 }
 
-void euid() {
+void e() {
 	uid_t effective_user_id = geteuid();
 	struct passwd *pw = getpwuid(effective_user_id);
 	printf("euid=%d [%s]\n", effective_user_id, pw->pw_name);
 }
 
-void groups() {
+void g() {
 	gid_t groups[32];
 	int ngroups = 32;
 	getgrouplist(getpwuid(getuid())->pw_name, getgid(), groups, &ngroups);
@@ -36,8 +36,8 @@ void groups() {
 }
 
 int main() {
-	uid();
-	euid();
-	groups();
+	u();
+	e();
+	g();
 	return 0;
 }
