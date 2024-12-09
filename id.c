@@ -7,15 +7,15 @@
 void u() {
 	uid_t ui = getuid();
 	gid_t gi = getgid();
-	struct passwd *pw = getpwuid(ui);
+	struct passwd *p = getpwuid(ui);
 	struct group *gr = getgrgid(gi);
-	printf("uid=%d [%s]\ngid=%d [%s]\n", ui, pw->pw_name, gi, gr->gr_name);
+	printf("uid=%d [%s]\ngid=%d [%s]\n", ui, p->pw_name, gi, gr->gr_name);
 }
 
 void e() {
 	uid_t effective_user_id = geteuid();
-	struct passwd *pw = getpwuid(effective_user_id);
-	printf("euid=%d [%s]\n", effective_user_id, pw->pw_name);
+	struct passwd *p = getpwuid(effective_user_id);
+	printf("euid=%d [%s]\n", effective_user_id, p->pw_name);
 }
 
 void g() {
