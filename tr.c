@@ -1,117 +1,115 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int dflag=0;
-int sflag=0;
-int cflag=0;
-int save=0;
-char code[256];
-char squeez[256];
-char vect[256];
+int a=0, b=0, c=0, d=0;
+char e[256], f[256], g[256];
 
-struct string {
-	int last,max;
-	char*p;
-} 
+struct h {
+	int i, j;
+	char *k;
+} m, n;
 
-string1,string2;
+w(struct h *x) {
+        register int y, z, a;
+        y = *x->k++;
+        if (y == '\\') {
+                z = a = 0;
+                while (z < 3 && (y = *x->k) >= '0' && y <= '7') {
+                        a = a * 8 + y - '0';
+                        z++;
+                        x->k++;
+                }
+                if (z > 0) y = a;
+                else y = *x->k++;
+        }
+        if (y == 0) *--x->k = 0;
+        return (y & 0377);
+}
 
-int main(argc,argv)char**argv; {
-	register i;
-	int j;
-	register c,d;
-	char*compl;
-	int lastd;
-	string1.last=string2.last=0;
-	string1.max=string2.max=0;
-	string1.p=string2.p="";
-	if(--argc>0) {
-		argv++;
-		if(*argv[0]=='-'&&argv[0][1]!=0) {
-			while(*++argv[0])switch(*argv[0]) {
-				case'c':cflag++;continue;
-					case'd':dflag++;continue;
-						case's':
-					sflag++;
+l(struct h *x) {
+again:
+        if (x->j) {
+                if (x->i++ < x->j) return (x->i);
+                x->j = x->i = 0;
+        }
+        if (x->i && *x->k == '-') {
+                w(x);
+                x->j = w(x);
+                if (x->j == 0) {
+                        x->k--;
+                        return ('-');
+                }
+                if (x->j < x->i) {
+                        x->i = x->j - 1;
+                        return ('-');
+                }
+                goto again;
+        }
+        return (x->i = w(x));
+}
+
+int main(int o, char **p) {
+	register int q;
+	int r;
+	register int s, t;
+	char *u;
+	int v;
+	m.i = n.i = 0;
+	m.j = n.j = 0;
+	m.k = n.k = "";
+	if (--o > 0) {
+		p++;
+		if (*p[0] == '-' && p[0][1] != 0) {
+			while (*++p[0]) {
+				switch (*p[0]) {
+				case 'c':
+					c++;
+					continue;
+				case 'd':
+					a++;
+					continue;
+				case 's':
+					b++;
 					continue;
 				}
-			argc--;
-			argv++;
+			}
+			o--;
+			p++;
 		}
 	}
-	if(argc>0)string1.p=argv[0];
-	if(argc>1)string2.p=argv[1];
-	for(i=0; i<256; i++)code[i]=vect[i]=0;
-	if(cflag) {
-		while(c=next(&string1))vect[c&0377]=1;
-		j=0;
-		for(i=1; i<256; i++)
-			if(vect[i]==0)vect[j++]=i;
-		vect[j]=0;
-		compl=vect;
+	if (o > 0) m.k = p[0];
+	if (o > 1) n.k = p[1];
+	for (q = 0; q < 256; q++) e[q] = g[q] = 0;
+	if (c) {
+		while (s = l(&m)) g[s & 0377] = 1;
+		r = 0;
+		for (q = 1; q < 256; q++)
+			if (g[q] == 0) g[r++] = q;
+		g[r] = 0;
+		u = g;
 	}
-	for(i=0; i<256; i++)squeez[i]=0;
-	lastd=0;
-	for(;;) {
-		if(cflag)c=*compl++;
-		else c=next(&string1);
-		if(c==0)break;
-		d=next(&string2);
-		if(d==0)d=lastd;
-		else lastd=d;
-		squeez[d&0377]=1;
-		code[c&0377]=dflag?1:d;
+	for (q = 0; q < 256; q++) f[q] = 0; v = 0;
+	for (;;) {
+		if (c) s = *u++;
+		else s = l(&m);
+		if (s == 0) 
+		break;
+		t = l(&n);
+		if (t == 0) t = v;
+		else v = t;f[t & 0377] = 1;e[s & 0377] = a ? 1 : t;
 	}
-	while(d=next(&string2))squeez[d&0377]=1;
-	squeez[0]=1;
-	for(i=0; i<256; i++) {
-		if(code[i]==0)code[i]=i;
-		else if(dflag)code[i]=0;
+
+	while (t = l(&n)) f[t & 0377] = 1;
+	f[0] = 1;
+	for (q = 0; q < 256; q++) {
+		if (e[q] == 0) e[q] = q;
+		else if (a) e[q] = 0;
 	}
-	while((c=getc(stdin))!=EOF) {
-		if(c==0)continue;
-		if(c=code[c&0377]&0377)
-			if(!sflag||c!=save||!squeez[c&0377])putchar(save=c);
+	while ((s = getc(stdin)) != EOF) {
+		if (s == 0) 
+			continue;
+		if (s = e[s & 0377] & 0377)
+			if (!b || s != d || !f[s & 0377]) putchar(d = s);
 	}
 	exit(0);
-}
-
-next(s) struct string*s; {
-again:
-	if(s->max) {
-		if(s->last++<s->max)
-			return(s->last);
-		s->max=s->last=0;
-	}
-	if(s->last&&*s->p=='-') {
-		nextc(s);
-		s->max=nextc(s);
-		if(s->max==0) {
-			s->p--;
-			return('-');
-		}
-		if(s->max<s->last) {
-			s->last=s->max-1;
-			return('-');
-		}
-		goto again;
-	}
-	return(s->last=nextc(s));
-}
-
-nextc(s) struct string*s; {
-	register c,i,n;
-	c=*s->p++;
-	if(c=='\\') {
-		i=n=0;
-		while(i<3&&(c=*s->p)>='0'&&c<='7') {
-			n=n*8+c-'0';
-			i++;
-			s->p++;
-		}
-		if(i>0)c=n;
-		else c=*s->p++;
-	}
-	if(c==0)*--s->p=0;
-	return(c&0377);
 }
