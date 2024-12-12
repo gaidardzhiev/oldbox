@@ -98,7 +98,6 @@ int main(int o, char **p) {
 		if (t == 0) t = v;
 		else v = t;f[t & 0377] = 1;e[s & 0377] = a ? 1 : t;
 	}
-
 	while (t = l(&n)) f[t & 0377] = 1;
 	f[0] = 1;
 	for (q = 0; q < 256; q++) {
