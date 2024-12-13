@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 65536
+#define S 65536
 
-void kmsg() {
-	char b[SIZE];
+void k() {
+	char b[S];
 	FILE *fp;
 	fp = fopen("/proc/kmsg", "r");
 	if (fp == NULL) {
@@ -18,6 +18,6 @@ void kmsg() {
 }
 
 int main(void) {
-	kmsg();
+	k();
 	return 0;
 }
