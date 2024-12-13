@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id toolbox cmp tree
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id toolbox cmp tree kmsg
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -48,6 +48,7 @@ man:
 	echo id.c - print real and effective user and group IDs
 	echo cmp.c - compare files byte by byte
 	echo tree.c - list directories in a tree-like format
+	echo kmsg.c - print messages from the kernel ring buffer
 
 install:
 	cp toolbox /usr/bin/toolbox
