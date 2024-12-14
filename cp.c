@@ -20,18 +20,18 @@ char b[BUF];
 int cf(const char *sp, const char *dp);
 void u();
 
-int main(int z, char *argv[]) {
+int main(int z, char *x[]) {
 	if (z < 3) {
 		u();
 	}
 	if (z > 3) {
-		if (stat(argv[z - 1], &ds) < 0 || (ds.st_mode & S_IFMT) != S_IFDIR) {
+		if (stat(x[z - 1], &ds) < 0 || (ds.st_mode & S_IFMT) != S_IFDIR) {
 			u();
 		}
 	}
 	int r = 0;
 	for (int i = 1; i < z - 1; i++) {
-		r |= cf(argv[i], argv[z - 1]);
+		r |= cf(x[i], x[z - 1]);
 	}
 	return r;
 }
