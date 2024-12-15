@@ -1,7 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void d(const char* o, long c, long w, long l);
+void d(const char* o, long c, long w, long l) {
+	while (*o) {
+		switch (*o++) {
+			case 'l':
+				printf("%7ld", l);
+				break;
+			case 'w':
+				printf("%7ld ", w);
+				break;
+			case 'c':
+				printf("%7ld", c);
+				break;
+		}
+	}
+}
 
 int main(int z, char** x) {
 	int i;
@@ -54,20 +68,4 @@ int main(int z, char** x) {
 		printf(" total\n");
 	}
 	return 0;
-}
-
-void d(const char* o, long c, long w, long l) {
-	while (*o) {
-		switch (*o++) {
-		case 'l':
-			printf("%7ld", l);
-			break;
-		case 'w':
-			printf("%7ld ", w);
-			break;
-		case 'c':
-			printf("%7ld", c);
-			break;
-		}
-	}
 }
