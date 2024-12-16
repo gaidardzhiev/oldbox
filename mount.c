@@ -17,7 +17,6 @@ int main(int argument_count, char **argument_values) {
 	struct mount_table *current_mount;
 	char *name_pointer;
 	int mount_file;
-//        mount_file = open("/etc/mtab", 0);
 	mount_file = open("/etc/mtab", O_RDONLY);
 	read(mount_file, (char*)mounts, MAX_ENTRIES * 2 * NAME_SIZE);
 	if(argument_count == 1) {
