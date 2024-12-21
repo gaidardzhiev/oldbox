@@ -31,14 +31,14 @@ void search_and_replace(FILE*file,const char*pattern, const char*replacement) {
 	regfree(&regex);
 }
 
-int main(int argc,char*argv[]) {
-	if(argc!=4) {
-		fprintf(stderr,E"\n",argv[0]);
+int main(int z,char*x[]) {
+	if(z!=4) {
+		fprintf(stderr,E"\n",x[0]);
 		return EXIT_FAILURE;
 	}
-	const char*filename=argv[1];
-	const char*pattern=argv[2];
-	const char*replacement=argv[3];
+	const char*filename=x[1];
+	const char*pattern=x[2];
+	const char*replacement=x[3];
 	FILE*file=fopen(filename,"r");
 	if(!file) {
 		perror(X);
