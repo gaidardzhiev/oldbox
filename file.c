@@ -4,17 +4,18 @@
 
 #define G "\033[0;32m"
 #define R "\033[0m"
+#define E "\033[1;31m"
 
 void fe(const char *filename) {
 	FILE *file;
 	unsigned char e_ident[16];
 	file = fopen(filename, "rb");
 	if (!file) {
-		perror(G"error opening ELF file"R);
+		perror(E"error opening ELF file"R);
 		return;
 	}
 	if (fread(e_ident, 1, sizeof(e_ident), file) < sizeof(e_ident)) {
-		perror(G"error reading ELF header"R);
+		perror(E"error reading ELF header"R);
 		fclose(file);
 		return;
 	}
@@ -28,7 +29,7 @@ void fe(const char *filename) {
 		printf(G"[64-bit]\n"R);
 		break;
 	default:
-		printf(G"[unknown]\n"R);
+		printf(E"[unknown]\n"R);
 		break;
 	}
 	if (e_ident[5] == 1) {
@@ -48,7 +49,7 @@ void fe(const char *filename) {
 		printf(G"[x86]\n"R);
 		break;
 	default:
-		printf(G"[unknown]\n"R);
+		printf(E"[unknown]\n"R);
 		break;
 	}
 	printf("data encoding: ");
@@ -60,7 +61,7 @@ void fe(const char *filename) {
 		printf(G"[big endian]\n"R);
 		break;
 	default:
-		printf(G"[unknown]\n"R);
+		printf(E"[unknown]\n"R);
 		break;
 	}
 	printf("version: "G"[%d]\n"R, e_ident[EI_VERSION]);
@@ -77,7 +78,7 @@ void ff(const char *filename) {
 		return;
 	}
 	if (fread(header, 1, sizeof(header), file) < sizeof(header)) {
-		perror("error reading file");
+		perror(E"error reading file"R);
 		fclose(file);
 		return;
 	}
@@ -104,7 +105,7 @@ void ff(const char *filename) {
 	} else if (header[0] == 0x52 && header[1] == 0x61 && header[2] == 0x72 && header[3] == 0x21) {
 		printf("%s: "G"[RAR archive format]\n"R, filename);
 	} else {
-		printf("%s: "G"[unknown file type]\n"R, filename);
+		printf("%s: "E"[unknown file type]\n"R, filename);
 	}
 }
 
