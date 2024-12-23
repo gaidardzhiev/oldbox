@@ -29,9 +29,9 @@ void fe(const char *filename) {
 		break;
 	}
 	if (e_ident[5] == 1) {
-		printf("[dynamically linked]\n");
+		printf("linked: [dynamically]\n");
 	} else {
-		printf("[statically linked]\n");
+		printf("linked: [statically]\n");
 	}
 	printf("CPU type: ");
 	switch (e_ident[16]) {
@@ -80,28 +80,28 @@ void ff(const char *filename) {
 	}
 	fclose(file);
 	if (header[0] == 0x7f && header[1] == 'E' && header[2] == 'L' && header[3] == 'F') {
-		printf("%s: ELF executable linkable format\n", filename);
+		printf("%s: [ELF executable linkable format]\n", filename);
 		fe(filename);
 	} else if (header[0] == '#' && header[1] == '!') {
-		printf("%s: POSIX shell script\n", filename);
+		printf("%s: [POSIX shell script]\n", filename);
 	} else if (header[0] == 0x89 && header[1] == 'P' && header[2] == 'N' && header[3] == 'G') {
-		printf("%s: PNG portable network graphics\n", filename);
+		printf("%s: [PNG portable network graphics]\n", filename);
 	} else if (header[0] == 'B' && header[1] == 'M') {
-		printf("%s: BMP bitmap image file\n", filename);
+		printf("%s: [BMP bitmap image file]\n", filename);
 	} else if (header[0] == 'G' && header[1] == 'I' && header[2] == 'F') {
-		printf("%s: GIF graphics interchange format\n", filename);
+		printf("%s: [GIF graphics interchange format]\n", filename);
 	} else if (header[0] == 0x25 && header[1] == 0x50 && header[2] == 0x44 && header[3] == 0x46) {
-		printf("%s: PDF document format\n", filename);
+		printf("%s: [PDF document format]\n", filename);
 	} else if (header[0] == 0x4D && header[1] == 0x5A) {
-		printf("%s: PE executable format\n", filename);
+		printf("%s: [PE executable format]\n", filename);
 	} else if (header[0] == 0x7F && header[1] == 'S' && header[2] == 'N' && header[3] == 'A') {
-		printf("%s: SNAX file format\n", filename);
+		printf("%s: [SNAX file format]\n", filename);
 	} else if (header[0] == 0x1F && header[1] == 0x8B) {
-		printf("%s: GZIP compressed format\n", filename);
+		printf("%s: [GZIP compressed format]\n", filename);
 	} else if (header[0] == 0x52 && header[1] == 0x61 && header[2] == 0x72 && header[3] == 0x21) {
-		printf("%s: RAR archive format\n", filename);
+		printf("%s: [RAR archive format]\n", filename);
 	} else {
-		printf("%s: unknown file type...\n", filename);
+		printf("%s: [unknown file type]\n", filename);
 	}
 }
 
