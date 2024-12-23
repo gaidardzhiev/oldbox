@@ -19,50 +19,50 @@ void fe(const char *filename) {
 	printf("architecture: ");
 	switch (e_ident[4]) {
 	case 1:
-		printf("32-bit\n");
+		printf("[32-bit]\n");
 		break;
 	case 2:
-		printf("64-bit\n");
+		printf("[64-bit]\n");
 		break;
 	default:
-		printf("unknown architecture\n");
+		printf("[unknown]\n");
 		break;
 	}
 	if (e_ident[5] == 1) {
-		printf("dynamically linked\n");
+		printf("[dynamically linked]\n");
 	} else {
-		printf("statically linked\n");
+		printf("[statically linked]\n");
 	}
 	printf("CPU type: ");
 	switch (e_ident[16]) {
 	case 0x28:
-		printf("ARM\n");
+		printf("[ARM]\n");
 		break;
 	case 0x3E:
-		printf("x86_64\n");
+		printf("[x86_64]\n");
 		break;
 	case 0x03:
-		printf("x86\n");
+		printf("[x86]\n");
 		break;
 	default:
-		printf("unknown CPU type\n");
+		printf("[unknown]\n");
 		break;
 	}
 	printf("data encoding: ");
 	switch (e_ident[EI_DATA]) {
 	case ELFDATA2LSB:
-		printf("little endian\n");
+		printf("[little endian]\n");
 		break;
 	case ELFDATA2MSB:
-		printf("big endian\n");
+		printf("[big endian]\n");
 		break;
 	default:
-		printf("unknown...\n");
+		printf("[unknown]\n");
 		break;
 	}
-	printf("version: %d\n", e_ident[EI_VERSION]);
-	printf("OS/ABI: %d\n", e_ident[EI_OSABI]);
-	printf("ABI version: %d\n", e_ident[EI_ABIVERSION]);
+	printf("version: [%d]\n", e_ident[EI_VERSION]);
+	printf("OS/ABI: [%d]\n", e_ident[EI_OSABI]);
+	printf("ABI version: [%d]\n", e_ident[EI_ABIVERSION]);
 }
 
 void ff(const char *filename) {
