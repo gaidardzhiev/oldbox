@@ -74,6 +74,16 @@ void ff(const char *filename) {
 		printf("%s: BMP bitmap image file\n", filename);
 	} else if (header[0] == 'G' && header[1] == 'I' && header[2] == 'F') {
 		printf("%s: GIF graphics interchange format\n", filename);
+	} else if (header[0] == 0x25 && header[1] == 0x50 && header[2] == 0x44 && header[3] == 0x46) {
+		printf("%s: PDF document format\n", filename);
+	} else if (header[0] == 0x4D && header[1] == 0x5A) {
+		printf("%s: PE executable format\n", filename);
+	} else if (header[0] == 0x7F && header[1] == 'S' && header[2] == 'N' && header[3] == 'A') {
+		printf("%s: SNAX file format\n", filename);
+	} else if (header[0] == 0x1F && header[1] == 0x8B) {
+		printf("%s: GZIP compressed format\n", filename);
+	} else if (header[0] == 0x52 && header[1] == 0x61 && header[2] == 0x72 && header[3] == 0x21) {
+		printf("%s: RAR archive format\n", filename);
 	} else {
 		printf("%s: unknown file type...\n", filename);
 	}
