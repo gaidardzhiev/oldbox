@@ -11,11 +11,11 @@ void fe(const char *filename) {
 	unsigned char e_ident[16];
 	file = fopen(filename, "rb");
 	if (!file) {
-		perror(E"error opening ELF file"R);
+		perror("error opening ELF file");
 		return;
 	}
 	if (fread(e_ident, 1, sizeof(e_ident), file) < sizeof(e_ident)) {
-		perror(E"error reading ELF header"R);
+		perror("error reading ELF header");
 		fclose(file);
 		return;
 	}
