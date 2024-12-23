@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <elf.h>
 
 void fe(const char *filename) {
 	FILE *file;
@@ -47,6 +48,21 @@ void fe(const char *filename) {
 		printf("unknown CPU type\n");
 		break;
 	}
+	printf("data encoding: ");
+	switch (e_ident[EI_DATA]) {
+	case ELFDATA2LSB:
+		printf("little endian\n");
+		break;
+	case ELFDATA2MSB:
+		printf("big endian\n");
+		break;
+	default:
+		printf("unknown...\n");
+		break;
+	}
+	printf("version: %d\n", e_ident[EI_VERSION]);
+	printf("OS/ABI: %d\n", e_ident[EI_OSABI]);
+	printf("ABI version: %d\n", e_ident[EI_ABIVERSION]);
 }
 
 void ff(const char *filename) {
