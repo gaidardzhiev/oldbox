@@ -90,6 +90,10 @@ void ff(const char *filename) {
 		printf("%s: "G"[POSIX shell script]\n"R, filename);
 	} else if (header[0] == 0x42 && header[1] == 0x5A) {
 		printf("%s: "G"[BZIP2 compressed format]\n"R, filename);
+	} else if (header[0] == 0x50 && header[1] == 0x4B) {
+		printf("%s: "G"[ZIP file format]\n"R, filename);
+	} else if (header[0] == 0x37 && header[1] == 0x7A) {
+		printf("%s: "G"[7-Zip compressed format]\n"R, filename);
 	} else if (header[0] == 0x89 && header[1] == 'P' && header[2] == 'N' && header[3] == 'G') {
 		printf("%s: "G"[PNG portable network graphics]\n"R, filename);
 	} else if (header[0] == 'B' && header[1] == 'M') {
