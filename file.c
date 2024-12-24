@@ -88,6 +88,8 @@ void ff(const char *filename) {
 		fe(filename);
 	} else if (header[0] == '#' && header[1] == '!') {
 		printf("%s: "G"[POSIX shell script]\n"R, filename);
+	} else if (header[0] == 0x42 && header[1] == 0x5A) {
+		printf("%s: "G"[BZIP2 compressed format]\n"R, filename);
 	} else if (header[0] == 0x89 && header[1] == 'P' && header[2] == 'N' && header[3] == 'G') {
 		printf("%s: "G"[PNG portable network graphics]\n"R, filename);
 	} else if (header[0] == 'B' && header[1] == 'M') {
