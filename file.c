@@ -78,7 +78,7 @@ void ff(const char *filename) {
 		return;
 	}
 	if (fread(header, 1, sizeof(header), file) < sizeof(header)) {
-		perror(E"error reading file"R);
+		perror("error reading file");
 		fclose(file);
 		return;
 	}
