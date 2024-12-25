@@ -110,6 +110,16 @@ void ff(const char *filename) {
 		printf("%s: "G"[GZIP compressed format]\n"R, filename);
 	} else if (header[0] == 0x52 && header[1] == 0x61 && header[2] == 0x72 && header[3] == 0x21) {
 		printf("%s: "G"[RAR archive format]\n"R, filename);
+	} else if (header[0] == 0x52 && header[1] == 0x49) {
+		printf("%s: "G"[RIFF file format]\n"R, filename);
+	} else if (header[0] == 0x4D && header[1] == 0x54) {
+		printf("%s: "G"[MIDI file format]\n"R, filename);
+	} else if (header[0] == 0x1A && header[1] == 0x45) {
+		printf("%s: "G"[matroska file format]\n"R, filename);
+	} else if (header[0] == 0x66 && header[1] == 0x74) {
+		printf("%s: "G"[FLAC audio format]\n"R, filename);
+	} else if (header[0] == 0x4F && header[1] == 0x67) {
+		printf("%s: "G"[OGG audio format]\n"R, filename);
 	} else {
 		printf("%s: "E"[unknown file type]\n"R, filename);
 	}
