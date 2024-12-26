@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NEXT(p)(*(p)?*(p)++:0)
+#define X(p)(*(p)?*(p)++:0)
 
 char b[1024];
 double f;
@@ -15,10 +15,10 @@ int main(argc,argv)char**argv; {
 	if(argc>=2)do {
 			Argv=argv;
 			fmt=format;
-			while(c=NEXT(fmt))
+			while(c=X(fmt))
 				switch(c) {
 				case'\\':
-					switch(c=NEXT(fmt)) {
+					switch(c=X(fmt)) {
 					case'n':
 						putchar('\n');
 						break;
@@ -49,10 +49,10 @@ int main(argc,argv)char**argv; {
 				case'%':
 					p=b;
 					*p++=c;
-					while(c&&(c=NEXT(fmt)))
+					while(c&&(c=X(fmt)))
 						switch(c){
 							case'*':
-								atonum(NEXT(argv));
+								atonum(X(argv));
 								p+=sprintf(p,"%d",lnum);
 								break;
 							case'h':
@@ -71,13 +71,13 @@ int main(argc,argv)char**argv; {
 							case'u':
 							case'U':
 								*p++=c;*p=0;
-								if(atonum(NEXT(argv)))printf(b, f);
+								if(atonum(X(argv)))printf(b, f);
 								else printf(b,lnum);
 								c=0;
 								break;
 							case's':
 								*p++=c;
-								*p=0;printf(b,NEXT(argv));
+								*p=0;printf(b,X(argv));
 								c=0;
 								break;
 							case'%':
