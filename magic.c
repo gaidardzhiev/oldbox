@@ -21,7 +21,7 @@ void s(const char *p) {
 		if (m[i] >= 32 && m[i] <= 126) {
 			printf("%c", m[i]);
 		} else {
-			printf(".");
+			printf("*");
 		}
 	}
 	printf("\n");
