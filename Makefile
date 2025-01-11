@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id toolbox cmp tree kmsg file magic
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id toolbox cmp tree kmsg file magic mem
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -51,6 +51,7 @@ man:
 	echo kmsg.c - print messages from the kernel ring buffer
 	echo file.c - determine file type by the magic bytes signature
 	echo magic.c - read the first 16 bytes of a file in hex and ascii for magic signature inspection
+	echo mem.c - print the memory layout of a process
 
 install:
 	cp toolbox /usr/bin/toolbox
