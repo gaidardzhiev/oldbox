@@ -3,18 +3,18 @@
 
 #define HEX "\x65\x6E\x74\x65\x72\x20\x74\x68\x65\x20\x61\x73\x63\x69\x69\x20\x73\x74\x72\x69\x6E\x67\x3A"
 
-void a2x(const char *in) {
-	for(int i=0; i<strlen(in); i++) {
-		printf("\\x%02X", (unsigned char)in[i]);
+void a2x(const char *z) {
+	for(int i=0; i<strlen(z); i++) {
+		printf("\\x%02X", (unsigned char)z[i]);
 	}
 	printf("\n");
 }
 
 int main() {
-	char in[65536];
+	char z[65536];
 	printf(HEX);
-	fgets(in,sizeof(in),stdin);
-	in[strcspn(in,"\n")]=0;
-	a2x(in);
+	fgets(z,sizeof(z),stdin);
+	in[strcspn(z,"\n")]=0;
+	a2x(z);
 	return 0;
 }
