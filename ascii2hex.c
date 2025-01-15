@@ -14,7 +14,7 @@ int main() {
 	char z[65536];
 	printf(HEX);
 	fgets(z,sizeof(z),stdin);
-	in[strcspn(z,"\n")]=0;
+	z[strcspn(z,"\n")]=0;
 	a2x(z);
 	return 0;
 }
