@@ -53,6 +53,5 @@ man:
 	echo magic.c - read the first 16 bytes of a file in hex and ascii for magic signature inspection
 	echo mem.c - print the memory layout of a process
 
-
 install:
 	cp toolbox /usr/bin/toolbox
