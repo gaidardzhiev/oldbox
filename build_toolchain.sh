@@ -3,6 +3,7 @@
 if tcc --version; then
         printf "\n" > /dev/null
 else
+	cd /usr/src
 	git clone https://github.com/TinyCC/tinycc
 	cd tinycc
 	./configure
@@ -16,6 +17,7 @@ printf "\n"
 if make --version; then
 	printf "\n" > /dev/null
 else
+	cd /usr/src
 	wget https://fosszone.csd.auth.gr/gnu/make/make-4.4.tar.gz
 	tar xf make-4.4.tar.gz
 	rm make-4.4.tar.gz
