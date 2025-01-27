@@ -8,7 +8,8 @@ else
 	cd /usr/src
 	git clone https://github.com/TinyCC/tinycc
 	cd tinycc
-	./configure
+	./configure \
+		--enable-cross
 	make
 	make test
 	make install
