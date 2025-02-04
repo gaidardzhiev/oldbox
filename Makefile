@@ -4,7 +4,7 @@ BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basen
 all: $(BINS)
 
 $(BINS): %: %.c
-	$(CC) -w -o $@ $<
+	$(CC) -o $@ $<
 
 clean:
 	rm $(BINS)

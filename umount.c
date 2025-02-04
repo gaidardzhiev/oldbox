@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <sys/mount.h>
 
 #define N 512
 #define S 1024
