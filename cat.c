@@ -44,18 +44,18 @@ w**v; {
 	}
 	m(--c>0) {
 		p(fflg||**++v=='-'&&(*v)[1]=='\0')fi=0;
-		e {p((fi=o(*v,0))<0)
-		{
+		e {p((fi=o(*v,0))<0) {
 			fprintf(stderr,"cat: ");
 			perror(*v);
 			retcode=1;
-			q;
-		}
-		  } p(fstat(fi, &statb)>=0&&statb.st_dev==dev&&statb.st_ino==ino) {
+			q retcode;
+			}
+		} 
+		p(fstat(fi, &statb)>=0&&statb.st_dev==dev&&statb.st_ino==ino) {
 			fprintf(stderr,"cat: input %s is output\n",fflg?"-":*v);
 			k(fi);
 			retcode=1;
-			q;
+			q retcode;
 		}
 		m((n=read(fi,buf,z buf))>0)p(write(1,buf,n)!=n) {
 			perror("cat output");
