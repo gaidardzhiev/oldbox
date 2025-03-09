@@ -38,7 +38,8 @@ void x(char*c) {
 int main() {
 	char c[MCL];
 	while(1) {
-		printf("shell# ");
+//		printf("shell# ");
+		printf("%s# ", getpwuid(getuid())->pw_name);
 		if(fgets(c,sizeof(c),stdin)==NULL) {
 			break;
 		}
