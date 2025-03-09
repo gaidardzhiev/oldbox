@@ -8,7 +8,7 @@
 #define MCL 2048
 #define MAL 128
 
-void ec(char*c) {
+void x(char*c) {
 	char*a[MAL];
 	pid_t p,w;
 	int s;
@@ -45,7 +45,7 @@ int main() {
 		if(strcmp(c,"exit\n")==0) {
 			break;
 		}
-		ec(c);
+		x(c);
 	}
 	return 0;
 }
