@@ -4,7 +4,9 @@
 #include <sys/stat.h>
 
 void u() {
-	printf("usage: ./test <option> <file>\n\n");
+	printf("usage:\n");
+	printf("  ./test <option> <file/string>\n");
+	printf("  ./test <string1> <option> <string2>\n");
 	printf("options:\n");
 	printf("  -e <file>			0 if <file> exists\n");
 	printf("  -f <file>			0 if <file> is a regular file\n");
