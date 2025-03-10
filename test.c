@@ -22,29 +22,29 @@ int main(int z, char *x[]) {
 		return 8;
 	}
 	if (strcmp(x[1], "-e") == 0 && z == 3) {
-		struct stat buffer;
-		if (stat(x[2], &buffer) == 0) {
+		struct stat b;
+		if (stat(x[2], &b) == 0) {
 			return 0;
 		} else {
 			return 1;
 		}
 	} else if (strcmp(x[1], "-f") == 0 && z == 3) {
-		struct stat buffer;
-		if (stat(x[2], &buffer) == 0 && S_ISREG(buffer.st_mode)) {
+		struct stat b;
+		if (stat(x[2], &b) == 0 && S_ISREG(b.st_mode)) {
 			return 0;
 		} else {
 			return 1;
 		}
 	} else if (strcmp(x[1], "-d") == 0 && z == 3) {
-		struct stat buffer;
-		if (stat(x[2], &buffer) == 0 && S_ISDIR(buffer.st_mode)) {
+		struct stat b;
+		if (stat(x[2], &b) == 0 && S_ISDIR(b.st_mode)) {
 			return 0;
 		} else {
 			return 1;
 		}
 	} else if (strcmp(x[1], "-s") == 0 && z == 3) {
-		struct stat buffer;
-		if (stat(x[2], &buffer) == 0 && buffer.st_size > 0) {
+		struct stat b;
+		if (stat(x[2], &b) == 0 && b.st_size > 0) {
 			return 0;
 		} else {
 			return 1;
