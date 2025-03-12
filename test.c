@@ -9,7 +9,7 @@ void u() {
 	"  ./test <string1> <option> <string2>\n"
 	"options:\n"
 	"  -e <file>			0 if <file> exists\n"
-	printf("  -f <file>			0 if <file> is a regular file\n");
+	"  -f <file>			0 if <file> is a regular file\n");
 	printf("  -d <file>			0 if <file> is a directory\n");
 	printf("  -s <file>			0 if <file> exists and has a size greater than zero\n");
 	printf("  -z <string>			0 if <string> is empty\n");
