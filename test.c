@@ -13,7 +13,7 @@ void u() {
 	"  -d <file>			0 if <file> is a directory\n"
 	"  -s <file>			0 if <file> exists and has a size greater than zero\n"
 	"  -z <string>			0 if <string> is empty\n"
-	"  -n <string>			0 if <string> is not empty\n");
+	"  -n <string>			0 if <string> is not empty\n"
 	printf("  <string1> = <string2>		0 if <string1> is equal to <string2>\n");
 	printf("  <string1> != <string2>	0 if <string1> is not equal to <string2>\n");
 }
