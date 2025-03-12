@@ -47,7 +47,7 @@ int main(int z, char *x[]) {
 		}
 	} else if (strcmp(x[1], "-l") == 0 && z == 3) {
 		struct stat b;
-		if (stat(x[2], &b) == 0 && S_ISLNK(b.st_mode)) {
+		if (lstat(x[2], &b) == 0 && S_ISLNK(b.st_mode)) {
 			return 0;
 		} else {
 			return 1;
