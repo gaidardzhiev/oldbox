@@ -6,7 +6,7 @@
 void u() {
 	printf("usage:\n"
 	"  ./test <option> <file/string>\n");
-	printf("  ./test <string1> <option> <string2>\n");
+	printf("  ./test <string1> <option> <string2>\n"
 	printf("options:\n");
 	printf("  -e <file>			0 if <file> exists\n");
 	printf("  -f <file>			0 if <file> is a regular file\n");
