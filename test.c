@@ -11,6 +11,7 @@ void u() {
 	"  -e <file>			0 if <file> exists\n"
 	"  -f <file>			0 if <file> is a regular file\n"
 	"  -d <file>			0 if <file> is a directory\n"
+	"  -l <file>			0 if <file> is a symbolic link\n"			
 	"  -s <file>			0 if <file> exists and has a size greater than zero\n"
 	"  -z <string>			0 if <string> is empty\n"
 	"  -n <string>			0 if <string> is not empty\n"
