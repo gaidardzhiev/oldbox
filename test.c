@@ -3,6 +3,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+//#define S_ISVTX 0x2000
+
 void u() {
 	printf("usage:\n"
 	"  ./test <option> <file/string>\n"
