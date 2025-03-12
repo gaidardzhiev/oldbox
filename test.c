@@ -13,7 +13,7 @@ void u() {
 	"  -d <file>			0 if <file> is a directory\n"
 	"  -l <file>			0 if <file> is a symbolic link\n"
 	"  -b <file>			0 if <file> has its sticky bit set\n"
-	"  -s <file>			0 if <file> exists and has a size greater than zero\n"
+	"  -s <file>			0 if <file> has a size greater than zero\n"
 	"  -z <string>			0 if <string> is empty\n"
 	"  -n <string>			0 if <string> is not empty\n"
 	"  <string1> = <string2>		0 if <string1> is equal to <string2>\n"
