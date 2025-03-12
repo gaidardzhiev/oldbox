@@ -15,7 +15,7 @@ void u() {
 	"  -z <string>			0 if <string> is empty\n"
 	"  -n <string>			0 if <string> is not empty\n"
 	"  <string1> = <string2>		0 if <string1> is equal to <string2>\n"
-	printf("  <string1> != <string2>	0 if <string1> is not equal to <string2>\n");
+	"  <string1> != <string2>	0 if <string1> is not equal to <string2>\n");
 }
 
 int main(int z, char *x[]) {
