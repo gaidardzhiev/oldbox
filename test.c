@@ -11,7 +11,8 @@ void u() {
 	"  -e <file>			0 if <file> exists\n"
 	"  -f <file>			0 if <file> is a regular file\n"
 	"  -d <file>			0 if <file> is a directory\n"
-	"  -l <file>			0 if <file> is a symbolic link\n"			
+	"  -l <file>			0 if <file> is a symbolic link\n"
+	"  -b <file>			0 if <file> has its sticky bit set\n"
 	"  -s <file>			0 if <file> exists and has a size greater than zero\n"
 	"  -z <string>			0 if <string> is empty\n"
 	"  -n <string>			0 if <string> is not empty\n"
@@ -48,6 +49,13 @@ int main(int z, char *x[]) {
 	} else if (strcmp(x[1], "-l") == 0 && z == 3) {
 		struct stat b;
 		if (lstat(x[2], &b) == 0 && S_ISLNK(b.st_mode)) {
+			return 0;
+		} else {
+			return 1;
+		}
+	} else if (strcmp(x[1], "-b") == 0 && z == 3) {
+		struct stat b;
+		if (stat(x[2], &b) == 0 && (b.st_mode & S_ISVTX)) {
 			return 0;
 		} else {
 			return 1;
