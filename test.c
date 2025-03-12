@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 
 void u() {
-	printf("usage:\n");
+	printf("usage:\n"
 	printf("  ./test <option> <file/string>\n");
 	printf("  ./test <string1> <option> <string2>\n");
 	printf("options:\n");
