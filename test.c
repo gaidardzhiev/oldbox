@@ -65,10 +65,14 @@ int main(int z, char *x[]) {
 		}
 	} else if (strcmp(x[1], "-p") == 0 && z == 3) {
 		struct stat b;
-		if (stat(x[2], &b) == 0 && S_ISFIFO(b.st_mode)) {
-			return 0;
+		if (stat(x[2], &b) == 0) {
+			if (S_ISFIFO(b.st_mode)) {
+				return 0;
+			} else {
+				return 1;
+			}
 		} else {
-			return 1;
+			return 64;
 		}
 	} else if (strcmp(x[1], "-s") == 0 && z == 3) {
 		struct stat b;
