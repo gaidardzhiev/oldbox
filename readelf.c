@@ -34,7 +34,6 @@ void elf(Elf64_Ehdr *h) {
 //		read(fd, &sh, sizeof(sh));
 //		printf("  [%2d] %20s\n", i, sh.sh_name);
 //	}
-//}
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
