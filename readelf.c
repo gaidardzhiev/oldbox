@@ -26,8 +26,6 @@ void elf(Elf64_Ehdr *h) {
 	printf("  section header string table index: %u\n", h->e_shstrndx);
 }
 
-//void psh(int fd, Elf64_Ehdr *h) {
-
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
 		fprintf(stderr, "usage: %s <ELF_file>\n", argv[0]);
