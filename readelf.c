@@ -31,7 +31,7 @@ void elf(Elf64_Ehdr *h) {
 //	lseek(fd, h->e_shoff, SEEK_SET);
 //	printf("\nsection headers:\n");
 //	for (int i = 0; i < h->e_shnum; i++) {
-//		read(fd, &sh, sizeof(sh))
+
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
