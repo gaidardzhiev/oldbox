@@ -28,8 +28,7 @@ void elf(Elf64_Ehdr *h) {
 
 //void psh(int fd, Elf64_Ehdr *h) {
 //	Elf64_Shdr sh;
-//	lseek(fd, h->e_shoff, SEEK_SET);
-//	printf("\nsection headers:\n");
+//	lseek(fd, h->e_shoff, SEEK_SET)
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
