@@ -45,7 +45,6 @@ int main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 	elf(&h);
-//	psh(fd, &header);
 	close(fd);
 	return EXIT_SUCCESS;
 }
