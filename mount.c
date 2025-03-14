@@ -30,7 +30,6 @@ int main(int argument_count, char **argument_values) {
 	}
 	read_only_flag = 0;
 	if(argument_count > 3) read_only_flag++;
-//        if(mount(argument_values[1], argument_values[2], read_only_flag) < 0) {
 	if(mount(argument_values[1], argument_values[2], "ext4", read_only_flag, NULL) < 0) {
 		perror("mount");
 		exit(1);
