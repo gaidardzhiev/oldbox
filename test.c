@@ -17,6 +17,7 @@ void u() {
 	"  -b <file>			0 if <file> has its sticky bit set\n"
 	"  -p <file>			0 if <file> is a named pipe\n"
 	"  -o <file>			0 if <file> is a socket\n"
+	"  -c <file>			0 if <file> is block special\n"
 	"  -s <file>			0 if <file> has a size greater than zero\n"
 	"  -z <string>			0 if <string> is empty\n"
 	"  -n <string>			0 if <string> is not empty\n"
