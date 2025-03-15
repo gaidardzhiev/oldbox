@@ -75,7 +75,7 @@ int main(int z, char *x[]) {
 		} else {
 			return 64;
 		}
-	} else if (strcmp(x[1], "-so") == 0 && z == 3) {
+	} else if (strcmp(x[1], "-o") == 0 && z == 3) {
 		struct stat b;
 		if (stat(x[2], &b) == 0) {
 			if (S_ISSOCK(b.st_mode)) {
