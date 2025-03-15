@@ -86,6 +86,13 @@ int main(int z, char *x[]) {
 		} else {
 			return 64;
 		}
+	} else if (strcmp(x[1], "-c") == 0 && z == 3) {
+		struct stat b;
+		if (stat(x[2], &b) == 0 && (S_IFBLK & b.st_mode)) {
+			return 0;
+		} else {
+			return 1;
+		}
 	} else if (strcmp(x[1], "-s") == 0 && z == 3) {
 		struct stat b;
 		if (stat(x[2], &b) == 0 && b.st_size > 0) {
