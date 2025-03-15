@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <string.h>
 
 #define BUF 65536
@@ -38,8 +38,8 @@ void m(const char*n, const char*p) {
 int main(int c, char*v[]) {
 	if(c!=3) {
 		fprintf(stderr,P"\n",v[0]);
-		return EXIT_FAILURE;
+		return 1;
 	}
 	m(v[2],v[1]);
-	return EXIT_SUCCESS;
+	return 0;
 }
