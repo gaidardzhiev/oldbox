@@ -57,5 +57,6 @@ man:
 install:
 	cp toolbox /usr/bin/toolbox
 
+.SILENT: prand
 prand:
 	echo prand.c - produces high-quality randomness using RDRAND CPU instruction that generates entropy directly from hardware using thermal noise and other physical phenomena
