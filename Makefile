@@ -8,6 +8,7 @@ $(BINS): %: %.c
 
 clean:
 	rm $(BINS)
+	rm prand
 
 .SILENT: man
 man:
