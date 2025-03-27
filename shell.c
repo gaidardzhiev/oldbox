@@ -7,15 +7,15 @@
 #include <pwd.h>
 
 #define X 2048
-#define MAL 128
+#define Z 128
 
 void x(char*c) {
-	char*a[MAL];
+	char*a[Z];
 	pid_t p,w;
 	int s;
 	char*t=strtok(c," \n");
 	int i=0;
-	while(t!=NULL&&i<MAL-1) {
+	while(t!=NULL&&i<Z-1) {
 		a[i++]=t;
 		t=strtok(NULL," \n");
 	}
