@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 #include <pwd.h>
 
-#define MCL 2048
+#define X 2048
 #define MAL 128
 
 void x(char*c) {
@@ -37,7 +37,7 @@ void x(char*c) {
 }
 
 int main() {
-	char c[MCL];
+	char c[X];
 	while(1) {
 		printf("%s# ",getpwuid(getuid())->pw_name);
 		if(fgets(c,sizeof(c),stdin)==NULL) {
