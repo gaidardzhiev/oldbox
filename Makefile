@@ -53,7 +53,8 @@ man:
 	echo file.c - determine file type by the magic bytes signature
 	echo magic.c - read the first 16 bytes of a file in hex and ascii for magic signature inspection
 	echo mem.c - print the memory layout of a process
-	echo test.c - evaluates conditional expressions and returns 0 if true or 1 if false
+	echo test.c - evaluate conditional expressions and returns 0 if true or 1 if false
+	echo clear.c - clear the terminal screen
 
 install:
 	cp toolbox /usr/bin/toolbox
