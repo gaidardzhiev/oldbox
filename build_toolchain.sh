@@ -20,15 +20,17 @@ ftcc() {
 
 printf "\n"
 
-if make --version; then
-	printf "\n" > /dev/null
-else
-	cd /usr/src
-	wget https://fosszone.csd.auth.gr/gnu/make/make-$MV.tar.gz
-	tar xf make-$MV.tar.gz
-	rm make-$MV.tar.gz
-	cd make-$MV
-	./build.sh
-	cp make /usr/bin
-	make --version
-fi
+fmake() {
+	make --version && {
+		printf "make is installed...\n";
+	} || {
+		cd /usr/src;
+		wget https://fosszone.csd.auth.gr/gnu/make/make-$MV.tar.gz;
+		tar xf make-$MV.tar.gz;
+		rm make-$MV.tar.gz;
+		cd make-$MV;
+		./build.sh;
+		cp make /usr/bin;
+		make --version;
+	}
+}
