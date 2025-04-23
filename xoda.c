@@ -79,7 +79,6 @@ int main(int z, char *x[]) {
 		fprintf(stderr, "usage: %s <x|o|d|a> <file>\n", x[0]);
 		return EXIT_FAILURE;
 	}
-//	xoda(x[1], x[2][0]);
 	xoda(x[2], x[1][0]);
 	return EXIT_SUCCESS;
 }
