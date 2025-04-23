@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define BUFFER_SIZE 16
+#define B 16
 
 void hex(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("%08lx: ", offset);
@@ -47,10 +47,10 @@ void xoda(const char *filename, const char format) {
 		perror("error opening file");
 		return;
 	}
-	unsigned char buffer[BUFFER_SIZE];
+	unsigned char buffer[B];
 	size_t bytesRead;
 	size_t offset = 0;
-	while ((bytesRead = fread(buffer, 1, BUFFER_SIZE, file)) > 0) {
+	while ((bytesRead = fread(buffer, 1, B, file)) > 0) {
 		switch (format) {
 		case 'x':
 			hex(buffer, bytesRead, offset);
@@ -74,11 +74,11 @@ void xoda(const char *filename, const char format) {
 	fclose(file);
 }
 
-int main(int argc, char *argv[]) {
-	if (argc != 3) {
-		fprintf(stderr, "usage: %s <filename> <x|o|d|a>\n", argv[0]);
+int main(int z, char *x[]) {
+	if (z != 3) {
+		fprintf(stderr, "usage: %s <filename> <x|o|d|a>\n", x[0]);
 		return EXIT_FAILURE;
 	}
-	xoda(argv[1], argv[2][0]);
+	xoda(x[1], x[2][0]);
 	return EXIT_SUCCESS;
 }
