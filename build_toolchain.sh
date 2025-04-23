@@ -1,10 +1,9 @@
 #!/bin/sh
 
-MV="4.4"
-
 ftcc() {
-	tcc --version && {
+	tcc -v && {
         	printf "tcc is installed...\n";
+		return 0;
 	} || {
 		cd /usr/src;
 		git clone https://github.com/TinyCC/tinycc;
@@ -14,23 +13,27 @@ ftcc() {
 		make;
 		make test;
 		make install;
-		tcc --version
+		tcc -v && return 0 || return 2
 	}
 }
-
-printf "\n"
 
 fmake() {
-	make --version && {
+	VER="4.4"
+	make -v	&& {
 		printf "make is installed...\n";
+		return 0;
 	} || {
 		cd /usr/src;
-		wget https://fosszone.csd.auth.gr/gnu/make/make-$MV.tar.gz;
-		tar xf make-$MV.tar.gz;
-		rm make-$MV.tar.gz;
-		cd make-$MV;
+		wget https://fosszone.csd.auth.gr/gnu/make/make-$VER.tar.gz;
+		tar xf make-$VER.tar.gz;
+		rm make-$VER.tar.gz;
+		cd make-$VER;
 		./build.sh;
 		cp make /usr/bin;
-		make --version;
+		make -v && return 0 || return 3
 	}
 }
+
+{ ftcc && printf "\n" && fmake; RET=$?; } || exit 1
+
+[ "$RET" -eq 0 ] 2>/dev/null || printf "%s\n" "$RET"
