@@ -2,18 +2,21 @@
 
 MV="4.4"
 
-if tcc --version; then
-        printf "\n" > /dev/null
-else
-	cd /usr/src
-	git clone https://github.com/TinyCC/tinycc
-	cd tinycc
-	./configure \
-		--enable-cross
-	make
-	make test
-	make install
-fi
+ftcc() {
+	tcc --version && {
+        	printf "tcc is installed...\n";
+	} || {
+		cd /usr/src;
+		git clone https://github.com/TinyCC/tinycc;
+		cd tinycc;
+		./configure \
+			--enable-cross;
+		make;
+		make test;
+		make install;
+		tcc --version
+	}
+}
 
 printf "\n"
 
