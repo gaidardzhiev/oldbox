@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define S 65536
-
 void k() {
-	char b[S];
+	char b[65536];
 	FILE *fp;
 	fp = fopen("/proc/kmsg", "r");
 	if (fp == NULL) {
