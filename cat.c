@@ -4,7 +4,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define BLOCK 65536
 #define r register
 #define d int
 #define w char
@@ -20,7 +19,7 @@
 #define o open
 #define k close
 
-w buf[BLOCK];
+w buf[65536];
 d g(c,v)d c;
 w**v; {
 	r d fflg=0;
