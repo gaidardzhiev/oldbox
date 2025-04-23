@@ -7,9 +7,9 @@
 #include <string.h>
 
 void mem(pid_t pid) {
-	char f[4096];
+	char f[65536];
 	snprintf(f, sizeof(f), "/proc/%d/maps", pid);
-	char b[4096];
+	char b[65536];
 	int fd = open(f, O_RDONLY);
 	if (fd == -1) {
 		perror("error opening: /proc/%d/maps");
