@@ -12,7 +12,7 @@ void hex(const unsigned char*b,size_t l) {
 				if(b[j]>=32&&b[j]<=126) {
 					printf("%c",b[j]);
 				} else {
-					printf("•");
+					printf(".");
 				}
 			}
 			printf("\n");

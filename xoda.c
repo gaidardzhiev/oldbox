@@ -76,9 +76,10 @@ void xoda(const char *filename, const char format) {
 
 int main(int z, char *x[]) {
 	if (z != 3) {
-		fprintf(stderr, "usage: %s <filename> <x|o|d|a>\n", x[0]);
+		fprintf(stderr, "usage: %s <x|o|d|a> <file>\n", x[0]);
 		return EXIT_FAILURE;
 	}
-	xoda(x[1], x[2][0]);
+//	xoda(x[1], x[2][0]);
+	xoda(x[2], x[1][0]);
 	return EXIT_SUCCESS;
 }
