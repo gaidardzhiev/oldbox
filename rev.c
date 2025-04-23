@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUF 4096
+#define BUF 65536
 
 void r(FILE *in) {
 	char l[BUF];
