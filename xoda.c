@@ -5,15 +5,15 @@
 
 #define B 16
 
-void x(unsigned char *buffer, size_t bytes, size_t offset) {
-	printf("%08lx: ", offset);
-	for (size_t i = 0; i < bytes; i++) {
-		printf("%02x ", buffer[i]);
+void x(unsigned char *b, size_t s, size_t o) {
+	printf("%08lx: ", o);
+	for (size_t i = 0; i < s; i++) {
+		printf("%02x ", b[i]);
 	}
 	printf("\n");
 }
 
-void octal(unsigned char *buffer, size_t bytes, size_t offset) {
+void o(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("%08lx: ", offset);
 	for (size_t i = 0; i < bytes; i++) {
 		printf("%03o ", buffer[i]);
@@ -21,7 +21,7 @@ void octal(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("\n");
 }
 
-void decimal(unsigned char *buffer, size_t bytes, size_t offset) {
+void d(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("%08lx: ", offset);
 	for (size_t i = 0; i < bytes; i++) {
 		printf("%03d ", buffer[i]);
@@ -29,7 +29,7 @@ void decimal(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("\n");
 }
 
-void ascii(unsigned char *buffer, size_t bytes, size_t offset) {
+void a(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("%08lx: ", offset);
 	for (size_t i = 0; i < bytes; i++) {
 		if (isprint(buffer[i])) {
@@ -56,13 +56,13 @@ void xoda(const char *filename, const char format) {
 			x(buffer, bytesRead, offset);
 			break;
 		case 'o':
-			octal(buffer, bytesRead, offset);
+			o(buffer, bytesRead, offset);
 			break;
 		case 'd':
-			decimal(buffer, bytesRead, offset);
+			d(buffer, bytesRead, offset);
 			break;
 		case 'a':
-			ascii(buffer, bytesRead, offset);
+			a(buffer, bytesRead, offset);
 			break;
 		default:
 			fprintf(stderr, "invalid format specified\n");
