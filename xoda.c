@@ -41,7 +41,7 @@ void a(unsigned char *b, size_t s, size_t o) {
 	printf("\n");
 }
 
-void f(const char *n, const char format) {
+void f(const char *n, const char m) {
 	FILE *f = fopen(n, "rb");
 	if (!f) {
 		perror("error opening file");
@@ -51,7 +51,7 @@ void f(const char *n, const char format) {
 	size_t bytesRead;
 	size_t offset = 0;
 	while ((bytesRead = fread(buffer, 1, B, f)) > 0) {
-		switch (format) {
+		switch (m) {
 		case 'x':
 			x(buffer, bytesRead, offset);
 			break;
