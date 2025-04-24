@@ -47,29 +47,29 @@ void f(const char *n, const char m) {
 		perror("error opening file");
 		return;
 	}
-	unsigned char buffer[B];
-	size_t bytesRead;
+	unsigned char b[B];
+	size_t r;
 	size_t offset = 0;
-	while ((bytesRead = fread(buffer, 1, B, f)) > 0) {
+	while ((r = fread(b, 1, B, f)) > 0) {
 		switch (m) {
 		case 'x':
-			x(buffer, bytesRead, offset);
+			x(b, r, offset);
 			break;
 		case 'o':
-			o(buffer, bytesRead, offset);
+			o(b, r, offset);
 			break;
 		case 'd':
-			d(buffer, bytesRead, offset);
+			d(b, r, offset);
 			break;
 		case 'a':
-			a(buffer, bytesRead, offset);
+			a(b, r, offset);
 			break;
 		default:
-			fprintf(stderr, "invalid format specified\n");
+			fprintf(stderr, "invalid format specified...\n");
 			fclose(f);
 			return;
 		}
-		offset += bytesRead;
+		offset += r;
 	}
 	fclose(f);
 }
