@@ -29,11 +29,11 @@ void d(unsigned char *b, size_t s, size_t o) {
 	printf("\n");
 }
 
-void a(unsigned char *buffer, size_t bytes, size_t offset) {
-	printf("%08lx: ", offset);
-	for (size_t i = 0; i < bytes; i++) {
-		if (isprint(buffer[i])) {
-			printf("%c", buffer[i]);
+void a(unsigned char *b, size_t s, size_t o) {
+	printf("%08lx: ", o);
+	for (size_t i = 0; i < s; i++) {
+		if (isprint(b[i])) {
+			printf("%c", b[i]);
 		} else {
 			printf(".");
 		}
@@ -41,7 +41,7 @@ void a(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("\n");
 }
 
-void xoda(const char *filename, const char format) {
+void f(const char *filename, const char format) {
 	FILE *file = fopen(filename, "rb");
 	if (!file) {
 		perror("error opening file");
@@ -79,6 +79,6 @@ int main(int z, char *x[]) {
 		fprintf(stderr, "usage: %s <x|o|d|a> <file>\n", x[0]);
 		return EXIT_FAILURE;
 	}
-	xoda(x[2], x[1][0]);
+	f(x[2], x[1][0]);
 	return EXIT_SUCCESS;
 }
