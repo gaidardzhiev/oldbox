@@ -41,16 +41,16 @@ void a(unsigned char *b, size_t s, size_t o) {
 	printf("\n");
 }
 
-void f(const char *filename, const char format) {
-	FILE *file = fopen(filename, "rb");
-	if (!file) {
+void f(const char *n, const char format) {
+	FILE *f = fopen(n, "rb");
+	if (!f) {
 		perror("error opening file");
 		return;
 	}
 	unsigned char buffer[B];
 	size_t bytesRead;
 	size_t offset = 0;
-	while ((bytesRead = fread(buffer, 1, B, file)) > 0) {
+	while ((bytesRead = fread(buffer, 1, B, f)) > 0) {
 		switch (format) {
 		case 'x':
 			x(buffer, bytesRead, offset);
@@ -66,12 +66,12 @@ void f(const char *filename, const char format) {
 			break;
 		default:
 			fprintf(stderr, "invalid format specified\n");
-			fclose(file);
+			fclose(f);
 			return;
 		}
 		offset += bytesRead;
 	}
-	fclose(file);
+	fclose(f);
 }
 
 int main(int z, char *x[]) {
