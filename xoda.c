@@ -49,27 +49,27 @@ void f(const char *n, const char m) {
 	}
 	unsigned char b[B];
 	size_t r;
-	size_t offset = 0;
+	size_t i = 0;
 	while ((r = fread(b, 1, B, f)) > 0) {
 		switch (m) {
 		case 'x':
-			x(b, r, offset);
+			x(b, r, i);
 			break;
 		case 'o':
-			o(b, r, offset);
+			o(b, r, i);
 			break;
 		case 'd':
-			d(b, r, offset);
+			d(b, r, i);
 			break;
 		case 'a':
-			a(b, r, offset);
+			a(b, r, i);
 			break;
 		default:
 			fprintf(stderr, "invalid format specified...\n");
 			fclose(f);
 			return;
 		}
-		offset += r;
+		i += r;
 	}
 	fclose(f);
 }
