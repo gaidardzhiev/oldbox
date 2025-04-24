@@ -5,7 +5,7 @@
 
 #define B 16
 
-void hex(unsigned char *buffer, size_t bytes, size_t offset) {
+void x(unsigned char *buffer, size_t bytes, size_t offset) {
 	printf("%08lx: ", offset);
 	for (size_t i = 0; i < bytes; i++) {
 		printf("%02x ", buffer[i]);
@@ -53,7 +53,7 @@ void xoda(const char *filename, const char format) {
 	while ((bytesRead = fread(buffer, 1, B, file)) > 0) {
 		switch (format) {
 		case 'x':
-			hex(buffer, bytesRead, offset);
+			x(buffer, bytesRead, offset);
 			break;
 		case 'o':
 			octal(buffer, bytesRead, offset);
