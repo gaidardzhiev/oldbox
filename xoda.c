@@ -13,10 +13,10 @@ void x(unsigned char *b, size_t s, size_t o) {
 	printf("\n");
 }
 
-void o(unsigned char *buffer, size_t bytes, size_t offset) {
-	printf("%08lx: ", offset);
-	for (size_t i = 0; i < bytes; i++) {
-		printf("%03o ", buffer[i]);
+void o(unsigned char *b, size_t s, size_t o) {
+	printf("%08lx: ", o);
+	for (size_t i = 0; i < s; i++) {
+		printf("%03o ", b[i]);
 	}
 	printf("\n");
 }
