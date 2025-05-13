@@ -7,8 +7,8 @@ $(BINS): %: %.c
 	$(CC) -o $@ $<
 
 clean:
-	rm $(BINS) 2>/dev/null || true
-	rm prand 2>/dev/null || true
+	rm $(BINS)
+	[ ! -f prand ] || rm prand
 
 .SILENT: man
 man:
