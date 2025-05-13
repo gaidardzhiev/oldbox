@@ -4,8 +4,8 @@
 #include <string.h>
 #include <ctype.h>
 
-#define LENGTH 512
-#define PROC "/proc"
+#define L 512
+#define P "/proc"
 
 int i(const char *str) {
 	while(*str) {
@@ -16,11 +16,11 @@ int i(const char *str) {
 }
 
 void r(const char *p) {
-	char q[LENGTH];
-	snprintf(q,sizeof(q),"%s/%s/stat",PROC,p);
+	char q[L];
+	snprintf(q,sizeof(q),"%s/%s/stat",P,p);
 	FILE *f = fopen(q,"r");
 	if(!f)return;
-	char c[LENGTH];
+	char c[L];
 	int d,r,n;
 	fscanf(f,"%*d %s %*c %d %d %d %*d %*d %*d %*d %*d %*d %*d %*d %*d",c,&d,&r,&n);
 	fclose(f);
@@ -30,7 +30,7 @@ void r(const char *p) {
 }
 
 int main() {
-	DIR*dir=opendir(PROC);
+	DIR*dir=opendir(P);
 	struct dirent*entry;
 	if(!dir) {
 		perror("opendir");
