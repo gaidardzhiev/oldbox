@@ -1,0 +1,91 @@
+.TH OLDBOX 1 "July 2025" "Oldbox 1.0" "User Commands"
+
+.NAME
+    oldbox \- a modular collection of standalone *nix utilities
+
+.SYNOPSIS
+    oldbox [command] [options]
+
+.DESCRIPTION
+    Oldbox is a suite of essential *nix command line utilities implemented as
+    individual standalone binaries, in contrast to BusyBox which bundles many 
+    utilities into a single static binary. This modular design offers fine grained
+    control over installation, customization, and maintenance of each tool.
+
+    Each utility is compiled separately rather than combined into one executable,
+    promoting modularity, simplicity, and ease of maintenance. Oldbox utilities
+    aim to preserve POSIX compatibility and minimal dependencies, making the suite
+    ideal for lightweight or embedded *nix environments.
+
+.INCLUDED UTILITIES
+    The following utilities are included in Oldbox (each as an individual binary):
+
+    basename     - strip file name affixes
+    cp           - copy or move files
+    echo         - print arguments
+    kill         - terminate a process
+    ln           - create links between files
+    mount        - mount a filesystem
+    nice         - execute a utility at altered scheduling priority
+    printf       - format and print data
+    rev          - reverse lines characterwise
+    sleep        - suspend execution for a specified interval
+    sync         - commit filesystem caches to disk
+    tee          - pipe fitting; duplicate input to output and files
+    touch        - set modification date of a file
+    true         - do nothing successfully
+    tty          - print terminal file name connected to stdin
+    umount       - unmount filesystem
+    wc           - display line, word, and character counts
+    yes          - output a string repeatedly until killed
+    tr           - transliterate data stream
+    cat          - concatenate files and print to stdout
+    shell        - simple command-line shell
+    pwd          - print current directory path
+    ps           - process status information
+    grep         - global regular expression print
+    du           - estimate file space usage
+    rm           - remove files
+    ascii2hex    - convert ASCII to hexadecimal representation
+    hexdump      - display file content in hex
+    false        - do nothing unsuccessfully
+    replace      - regular expression pattern matching and substitution
+    readelf      - display information about ELF files
+    strings      - print sequences of printable characters
+    ls           - list directory contents
+    xoda         - dump files in hex, octal, decimal or ASCII
+    id           - print real and effective user and group IDs
+    cmp          - compare files byte-by-byte
+    tree         - list directories in tree-like format
+    kmsg         - print kernel ring buffer messages
+    file         - determine file type by magic bytes
+    magic        - inspect magic signature bytes in files
+    mem          - print memory layout of a process
+    test         - evaluate conditional expressions; returns 0 if true, 1 if false
+    clear        - clear the terminal screen
+    oldbox       - simple command dispatcher for the utilities
+
+.MOTIVATION
+    Oldbox was created to address these goals:
+
+    - Modularity: install and update only the tools needed
+    - Simplicity: easier development and maintenance of isolated utilities
+    - Avoid symlink or argv dispatching complexity typical in single binary solutions
+    - POSIX Compatibility: tools behave similarly to standard *nix commands
+
+.BUILDING AND INSTALLATION
+    To build and install Oldbox:
+
+        git clone https://github.com/gaidardzhiev/oldbox
+        cd oldbox
+        ./build_toolchain.sh
+        make
+        make install
+
+    After installation, each utility is accessible as an individual executable.
+
+.LICENSE
+    This project is licensed under the GNU General Public License version 3 (GPL3).
+
+.SECTION
+    For more information, visit: https://github.com/gaidardzhiev/oldbox

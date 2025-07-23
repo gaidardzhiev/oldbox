@@ -58,6 +58,7 @@ man:
 
 install:
 	cp oldbox /usr/bin/oldbox
+	cp oldbox.1 /usr/share/man/man1/
 
 .SILENT: prand
 prand:
