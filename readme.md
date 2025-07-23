@@ -1,4 +1,4 @@
-# Oldbox: A Modular `*nix` Utility Suite
+# A Modular `*nix` Utility Suite
 
 Oldbox is a collection of essential `*nix` command line utilities implemented as **individual, standalone binaries**, unlike BusyBox which consolidates many utilities into a single static binary. This modular approach gives users fine grained control over installation, customization, and maintenance of each tool.
 
