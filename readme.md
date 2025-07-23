@@ -71,6 +71,7 @@ oldbox.c - simple command dispatcher for the utilities
 ```
 git clone https://github.com/gaidardzhiev/oldbox
 cd oldbox
+./build_tooolchain.sh
 make
 make install
 ```
