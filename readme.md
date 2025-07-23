@@ -76,10 +76,6 @@ make
 make install
 ```
 
----
-
 ## License
 
 This project is licensed under the GPL3 License.
-
----
