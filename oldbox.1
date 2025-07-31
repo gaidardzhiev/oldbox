@@ -1,12 +1,12 @@
 .TH OLDBOX 1 "July 2025" "Oldbox 1.0" "User Commands"
 
-.NAME
+.SH NAME
     oldbox \- a modular collection of standalone *nix utilities
 
-.SYNOPSIS
+.SH SYNOPSIS
     oldbox [command] [options]
 
-.DESCRIPTION
+.SH DESCRIPTION
     Oldbox is a suite of essential *nix command line utilities implemented as
     individual standalone binaries, in contrast to BusyBox which bundles many 
     utilities into a single static binary. This modular design offers fine grained
@@ -17,7 +17,7 @@
     aim to preserve POSIX compatibility and minimal dependencies, making the suite
     ideal for lightweight or embedded *nix environments.
 
-.INCLUDED UTILITIES
+.SH INCLUDED UTILITIES
     The following utilities are included in Oldbox (each as an individual binary):
 
     basename     - strip file name affixes
@@ -65,7 +65,7 @@
     clear        - clear the terminal screen
     oldbox       - simple command dispatcher for the utilities
 
-.MOTIVATION
+.SH MOTIVATION
     Oldbox was created to address these goals:
 
     - Modularity: install and update only the tools needed
@@ -73,7 +73,7 @@
     - Avoid symlink or argv dispatching complexity typical in single binary solutions
     - POSIX Compatibility: tools try to behave similarly to standard *nix commands
 
-.BUILDING AND INSTALLATION
+.SH BUILDING AND INSTALLATION
     To build and install oldbox:
 
         git clone https://github.com/gaidardzhiev/oldbox
@@ -84,8 +84,8 @@
 
     After installation, each utility is accessible as an individual executable.
 
-.LICENSE
-    This project is licensed under the GNU General Public License version 3 (GPL3).
+.SH COPYRIGHT
+Copyright  ©  2025  Free  Software  Foundation,  Inc.   License GPLv3+: GNU GPL version 3 or later <https://gnu.org/li‐censes/gpl.html>. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law.
 
-.SECTION
+.SH SECTION
     For more information, visit: https://github.com/gaidardzhiev/oldbox
