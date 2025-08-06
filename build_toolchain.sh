@@ -27,7 +27,7 @@ fmake() {
 		wget https://fosszone.csd.auth.gr/gnu/make/make-"$VER".tar.gz;
 		tar xf make-"$VER".tar.gz;
 		rm make-"$VER".tar.gz;
-		cd make-$VER;
+		cd make-"$VER";
 		./build.sh;
 		cp make /usr/bin;
 		make -v && return 0 || return 3
