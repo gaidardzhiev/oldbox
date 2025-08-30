@@ -56,6 +56,7 @@ mem.c - print the memory layout of a process
 test.c - evaluate conditional expressions and returns 0 if true or 1 if false
 clear.c - clear the terminal screen
 oldbox.c - simple command dispatcher for the utilities
+lsblk.c - list block devices
 ```
 
 
