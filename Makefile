@@ -56,6 +56,7 @@ man:
 	echo test.c - evaluate conditional expressions and returns 0 if true or 1 if false
 	echo clear.c - clear the terminal screen
 	echo lsblk.c - list block devices
+	echo systrace.c - trace system calls and signals
 	echo bundle.c - bundle files into a POSIX shell script archive
 
 install:
