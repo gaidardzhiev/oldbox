@@ -1,6 +1,6 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id oldbox cmp tree kmsg file magic mem test clear lsblk systrace
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id oldbox cmp tree kmsg file magic mem test clear lsblk systrace bundle
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -56,6 +56,7 @@ man:
 	echo test.c - evaluate conditional expressions and returns 0 if true or 1 if false
 	echo clear.c - clear the terminal screen
 	echo lsblk.c - list block devices
+	echo bundle.c - bundle files into a POSIX shell script archive
 
 install:
 	cp oldbox /usr/bin/oldbox
