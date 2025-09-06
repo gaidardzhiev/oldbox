@@ -58,6 +58,7 @@ clear.c - clear the terminal screen
 oldbox.c - simple command dispatcher for the utilities
 lsblk.c - list block devices
 systrace.c - trace system calls and signals on armv8l and x86_64
+bundle.c - bundle files into a POSIX shell script archive
 ```
 
 
