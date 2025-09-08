@@ -1,6 +1,7 @@
 CC=tcc
 
-BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id oldbox cmp tree kmsg file magic mem test clear lsblk systrace bundle
+BINS=kill tty touch echo mount sync umount nice sleep tee wc yes rev ln cp basename true printf tr cat shell pwd ps grep du rm ascii2hex hexdump false replace readelf strings ls xoda id oldbox cmp tree kmsg file magic mem test clear lsblk systrace bundle xargs
+
 all: $(BINS)
 
 $(BINS): %: %.c
@@ -58,6 +59,7 @@ man:
 	echo lsblk.c - list block devices
 	echo systrace.c - trace system calls and signals
 	echo bundle.c - bundle files into a POSIX shell script archive
+	echo xargs.c - build and execute command lines from standard input
 
 install:
 	cp oldbox /usr/bin/oldbox
