@@ -32,7 +32,7 @@ wc.c - display a count of lines words and characters in a file
 yes.c - output a string repeatedly until killed
 tr.c - transliterate data stream
 cat.c - concatenate files and print on the stdout
-shell.c - simple command-line shell
+shell.c - simple command line shell
 pwd.c - print the path of the current directory
 ps.c - process status information
 grep.c - global regular expression print
@@ -48,7 +48,7 @@ ls.c - list directory contents
 xoda.c - dump files in hex octal decimal or ASCII
 id.c - print real and effective user and group IDs
 cmp.c - compare files byte by byte
-tree.c - list directories in a tree-like format
+tree.c - list directories in a tree like format
 kmsg.c - print messages from the kernel ring buffer
 file.c - determine file type by the magic bytes signature
 magic.c - read the first 16 bytes of a file in hex and ascii for magic signature inspection
@@ -59,6 +59,7 @@ oldbox.c - simple command dispatcher for the utilities
 lsblk.c - list block devices
 systrace.c - trace system calls and signals on armv8l and x86_64
 bundle.c - bundle files into a POSIX shell script archive
+xargs.c - build and execute command lines from standard input
 ```
 
 
