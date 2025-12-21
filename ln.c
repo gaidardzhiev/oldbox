@@ -31,7 +31,7 @@ int main(int z, char** x) {
 		ff = 1;
 	}
 	if (z < 2 || z > 3) {
-		fprintf(stderr, "usage: ln <target> <link>\n");
+		fprintf(stderr, "usage: %s <target> <link>\n", x[0]);
 		exit(EXIT_FAILURE);
 	}
 	b = f(x[1], '/');
