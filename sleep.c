@@ -7,14 +7,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char **argv) {
+int main(int z, char **x) {
 	int c, n = 0;
 	char *i;
-	if (argc < 2) {
-		fprintf(stderr, "usage: sleep <sec> \n");
+	if (z < 2) {
+		fprintf(stderr, "usage: %s <sec> \n", x[0]);
 		return EXIT_FAILURE;
 	}
-	i = argv[1];
+	i = x[1];
 	while ((c = *i++)) {
 		if (c < '0' || c > '9') {
 			fprintf(stderr, "error: invalid character...\n");
