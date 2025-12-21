@@ -30,7 +30,7 @@ int main(int a, char **v) {
 		exit(0);
 	}
 	if(a < 3) {
-		fprintf(stderr, "usage: mount <d> <mountpoint>\n");
+		fprintf(stderr, "usage: %s <dev> <mountpoint>\n", v[0]);
 		exit(1);
 	}
 	ro = 0;
